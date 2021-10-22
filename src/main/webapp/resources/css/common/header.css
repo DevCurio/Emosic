@@ -1,0 +1,107 @@
+body {
+    position: relative;
+    width: 1024px;
+    margin: 0 auto;
+    background: azure;
+}
+/* google-icons */
+.material_icons_outlined {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+  }
+.header {
+    width: 1024px;
+    height: 60px;
+    vertical-align: middle;
+}
+.main_link {
+    float: left;
+    width: 20%;
+    font-size: 2rem;
+    margin-top: 10px;
+    height: 50px;
+    text-decoration: none;
+    text-align: right;
+    color: darkorange;
+    
+}
+.header_search {
+    text-align: center;
+    width: 60%;
+    height: 50px;
+    float: left;
+    margin-top: 10px;
+}
+#combined_search {
+    height: 40px;
+    width: 340px;
+    display: inline-flex;
+}
+#combined_search_input {
+    height: 40px;
+    width: 300px;
+    border-color: lightsteelblue;
+}
+#combined_search_button {
+    height: 40px;
+    width: 40px;
+    /* background-image: url(/icon/loupe.png); */
+    background-repeat: round;
+    cursor: pointer;
+    border-color: lightsteelblue;
+}
+.nav_login {
+    height: 50px;
+    margin-top: 10px;
+    float: left;
+    width: 20%;
+    text-align: center;
+    vertical-align: middle;
+}
+#login_button {
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+/* 네이게이션 */
+#nav {
+    width: 100%;
+    height: 40px;
+    background-color: darkorange;
+}
+#nav > ul {
+    display: contents;
+}
+#nav > ul > li {
+    width: 33.3%;
+    float: left;
+    text-align: center;
+    margin-top: 5px;
+    list-style: none;
+}
+#nav > ul > li > a {
+    font-size: 1.5rem;
+    text-decoration: none;
+}
