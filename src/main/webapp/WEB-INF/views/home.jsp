@@ -10,12 +10,13 @@
 	<jsp:param value="Emosic" name="title"/>
 </jsp:include>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/main/main.css">
 
-<h1>
+<%-- <h1>
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P>  The time on the server is ${serverTime}. </P> --%>
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

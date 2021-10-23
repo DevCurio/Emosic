@@ -39,30 +39,21 @@
 	<div id="container">
         <header>
             <div class="header">
-              <a class="main_link" href="/html/header.html">Emosic</a>
+              <a class="main_link" href="${pageContext.request.contextPath}/">Emosic</a>
 
-              <%-- <div class="header_search">
-                <form id="combined_search">
-                  <input id="combined_search_input" type="search" placeholder="Search" aria-label="Search">
-                  <button id="combined_search_button" type="submit">
-                    <span class="material_icons_outlined">search</span>
-                  </button>
-                </form>
-              </div> --%>
-              
               <nav id="nav">
-              <ul>
-                <li>
-                  <a href="#">PlayList</a>
-                </li>
-                <li>
-                  <a href="#">Daliy</a>
-                </li>
-                <li>
-                  <a href="#">Notice</a>
-                </li>
-              </ul>
-            </nav>
+	              <ul>
+	                <li>
+	                  <a href="#">PlayList</a>
+	                </li>
+	                <li>
+	                  <a href="#">Daliy</a>
+	                </li>
+	                <li>
+	                  <a href="#">Notice</a>
+	                </li>
+	              </ul>
+	          </nav>
 
               <div class="nav_login">
                 <button id="login_button">
@@ -71,6 +62,5 @@
               </div>
             </div>
 
-            
         </header>
 <section id="content">
