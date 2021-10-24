@@ -19,4 +19,4 @@
 <P>  The time on the server is ${serverTime}. </P> --%>
 
 
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<%-- <jsp:include page="/WEB-INF/views/common/footer.jsp"/> --%>
