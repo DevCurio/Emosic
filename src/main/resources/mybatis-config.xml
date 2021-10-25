@@ -11,7 +11,7 @@
 		
 	</settings>
 	
-	<!-- <typeAliases>
+	<typeAliases>
 		<typeAlias type="com.project.emosic.member.model.vo.Member" alias="member"/>
 		<package name="com.project.emosic"/>
 		
@@ -21,6 +21,6 @@
   	
    		<package name="com.project.emosic.common.typehandler" />
    		
-  	</typeHandlers> -->
+  	</typeHandlers>
   	
 </configuration>
