@@ -37,7 +37,7 @@ public class RegisterController {
 			//비밀번호 암호화
 			String rawPassword = member.getPassword();
 			String bcryptPwd = bcryptPasswordEncoder.encode(rawPassword);
-
+			
 			//DB처리
 			member.setPassword(bcryptPwd);
 			int result = memberService.insertMember(member);
