@@ -8,9 +8,11 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.emosic.member.model.service.MemberService;
@@ -55,6 +57,15 @@ public class RegisterController {
 		}
 		
 		
+	}
+	
+	@ResponseBody
+	@GetMapping("/id/duplicate")
+	public int idDuplicateCheck(String id) {	
+		
+		int isduplicate = memberService.selectIdDuplicate(id);
+		
+		return isduplicate;
 	}
 	
 	@InitBinder

@@ -20,5 +20,11 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberDao.insertMember(member);
 	}
+
+	@Override
+	public int selectIdDuplicate(String id) {
+		
+		return memberDao.selectIdDuplicate(id);
+	}
 	
 }

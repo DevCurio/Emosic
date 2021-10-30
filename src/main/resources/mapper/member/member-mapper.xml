@@ -17,6 +17,15 @@
 				)
 	</insert>
 	
+	<select id="selectIdDuplicate" resultType="int">
+		select
+			count(*)
+		from
+			member
+		where
+			id = #{id}
+	</select>
+	
 	<resultMap type="member" id="memberMap">
 		<id column="id" property="id"/>
 		<result column="password" property="password"/>

@@ -17,26 +17,14 @@ span {
     width: 400px;
     margin: 0 auto;
 }
-#id, #password, #pw_confirm, #nickName, #phone, #email{
+#id, #password, #pw_confirm, #nickName{
     width: 400px;
     height: 40px;
     margin-top: 20px;
 }
 
-#id_success, #id_fail, #pw_success, #pw_fail, #pw_confirm_success, #pw_confirm_fail, #nick_name_success, #nice_name_fail, #email_success, #email_fail{
+.id_success, .id_fail, .pw_success, .pw_fail, .pw_confirm_success, .pw_confirm_fail, .nick_name_success, .nick_name_fail {
 	display: none;
-}
-
-#emailYN, .email_check {
-    float: left;
-}
-
-.email_check {
-    margin-top: 2px;
-}
-
-#email_success, #email_fail {
-    float: right;
 }
 
 .reg_btn {

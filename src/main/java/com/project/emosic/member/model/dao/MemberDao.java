@@ -6,5 +6,7 @@ public interface MemberDao {
 
 	int insertMember(Member member);
 
+	int selectIdDuplicate(String id);
+
 	
 }
