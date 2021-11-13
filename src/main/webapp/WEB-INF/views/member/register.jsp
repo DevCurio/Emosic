@@ -20,7 +20,8 @@
 	
 	<!-- 사용자작성 css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/register.css">
-    
+    <!-- 사용자 작성 js -->
+	<script src="${pageContext.request.contextPath}/resources/js/member/register.js"></script>
 	
     <%-- RedirectAttributes.addFlashAttribute의 저장된 속성값 사용(1회용) --%>
 	<c:if test="${not empty msg}">
@@ -43,22 +44,22 @@
         	id="reg_info"
         	method="post">
         	
-            <input type="text" name="id" id="id" placeholder="아이디">
+            <input type="text" name="id" id="id" placeholder="아이디" required>
             <span id="id_check"></span>
             <span class="id_success">사용 가능합니다.</span>
             <span class="id_fail">사용 불가합니다.(5~12자의 영문소문자,숫자만 가능합니다.)</span>
 
-            <input type="password" name="password" id="password" placeholder="비밀번호">
+            <input type="password" name="password" id="password" placeholder="비밀번호" required>
 
             <span class="pw_success">사용 가능합니다.</span>
             <span class="pw_fail">사용 불가합니다.(8~20자의 영문자, 숫자, 특수문자가 포함되어야 합니다.)</span>
 
-            <input type="password" id="pw_confirm" placeholder="비밀번호 확인">
+            <input type="password" name="password" id="pw_confirm" placeholder="비밀번호 확인" required>
 
             <span class="pw_confirm_success">비밀번호가 일치 합니다.</span>
             <span class="pw_confirm_fail">비밀번호가 일치 하지 않습니다.</span>
             
-            <input type="text" name="nickName" id="nickName" placeholder="닉네임">
+            <input type="text" name="nickName" id="nickName" placeholder="닉네임" required>
 
             <span class="nick_name_success">사용 가능합니다.</span>
             <span class="nick_name_fail">이미 사용중 입니다.</span>        
@@ -68,8 +69,50 @@
     </div>
     
     
-<!-- 사용자 작성 js -->
-<script src="${pageContext.request.contextPath}/resources/js/member/register.js"></script>
+<script>
+//아이디 정규식
+$("#id").blur(function(){
+
+	var $id = $("#id");
+	var idReg = /^[a-z0-9_-]{5,20}$/;
+
+	if(idReg.test($id.val()) == false) {
+		alert("5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.");
+		$id.focus();
+		return false;
+	}
+	
+	return true;
+});
+//비밀번호 정규식
+$("[name=password]").blur(function(){
+
+	var $pw = $("#password");
+	var pwReg = ^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$;
+
+	if(pwReg.test($pw.val()) == false) {
+		alert("8~15자의 대소문자, 숫자, 특수문자 세가지 조합만 사용 가능합니다.");
+		$pw.focus();
+		return false;
+	}
+
+	return true;
+});
+
+
+$("#pw_confirm").blur(function(){
+	
+	var $password = $("#password");
+	var $pwConfirm = $("#pw_confirm");
+	
+	if($password.val() != $pwConfirm.val()){
+		alert("비밀번호가 일치하지 않습니다.");
+		$password.select();
+	}
+});
+
+
+</script>
 
 	
 </body>
