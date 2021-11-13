@@ -14,8 +14,9 @@ public class Member {
 	private String id;
 	private String password;
 	private String nickName;
-	private String role;
+	private char authority;
+	private String loginType;
 	private Date enrollDate;
-	private String enabled;
+	private char enabled;
 	
 }

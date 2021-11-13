@@ -21,7 +21,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public int selectIdDuplicate(String id) {
+	public boolean selectIdDuplicate(String id) {
 		
 		return session.selectOne("member.selectIdDuplicate", id);
 	}

@@ -6,5 +6,5 @@ public interface MemberService {
 
 	int insertMember(Member member);
 
-	int selectIdDuplicate(String id);
+	boolean selectIdDuplicate(String id);
 }

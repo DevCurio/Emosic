@@ -61,11 +61,11 @@ public class RegisterController {
 	
 	@ResponseBody
 	@GetMapping("/id/duplicate")
-	public int idDuplicateCheck(String id) {	
+	public String idDuplicateCheck(String id) {	
 		
-		int isduplicate = memberService.selectIdDuplicate(id);
+		boolean isDuplicate = memberService.selectIdDuplicate(id);
 		
-		return isduplicate;
+		return isDuplicate ? "true" : "false";
 	}
 	
 	@InitBinder
