@@ -22,7 +22,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public boolean selectIdDuplicate(String id) {
+	public int selectIdDuplicate(String id) {
 		
 		return memberDao.selectIdDuplicate(id);
 	}
