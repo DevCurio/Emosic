@@ -7,4 +7,6 @@ public interface MemberService {
 	int insertMember(Member member);
 
 	int selectIdDuplicate(String id);
+	
+	int selectNickNameDuplicate(String nickName);
 }

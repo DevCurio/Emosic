@@ -23,9 +23,6 @@ span {
     margin-top: 20px;
 }
 
-.id_success, .id_fail, .pw_success, .pw_fail, .pw_confirm_success, .pw_confirm_fail, .nick_name_success, .nick_name_fail {
-	display: none;
-}
 
 .reg_btn {
     width: 410px;

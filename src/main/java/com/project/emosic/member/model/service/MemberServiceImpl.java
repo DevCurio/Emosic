@@ -26,5 +26,10 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberDao.selectIdDuplicate(id);
 	}
+
+	@Override
+	public int selectNickNameDuplicate(String nickName) {
+		return memberDao.selectNickNameDuplicate(nickName);
+	}
 	
 }

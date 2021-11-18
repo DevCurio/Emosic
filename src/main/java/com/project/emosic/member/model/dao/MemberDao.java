@@ -8,5 +8,7 @@ public interface MemberDao {
 
 	int selectIdDuplicate(String id);
 
+	int selectNickNameDuplicate(String nickName);
+
 	
 }

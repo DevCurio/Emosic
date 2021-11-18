@@ -59,15 +59,6 @@ public class RegisterController {
 		
 	}
 	
-	@ResponseBody
-	@GetMapping("/id/duplicate")
-	public int idDuplicateCheck(String id) {	
-		
-		int isDuplicate = memberService.selectIdDuplicate(id);
-		
-		return isDuplicate;
-	}
-	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		//Member.enrollDate:java.sql.Date 타입 처리
@@ -78,4 +69,21 @@ public class RegisterController {
 		binder.registerCustomEditor(java.sql.Date.class, editor);
 	}
 	
+	@ResponseBody
+	@GetMapping("/id/duplicate")
+	public int idDuplicateCheck(String id) {	
+		
+		int isDuplicate = memberService.selectIdDuplicate(id);
+		
+		return isDuplicate;
+	}
+	
+	@ResponseBody
+	@GetMapping("/nickName/duplicate")
+	public int nickNameDuplicateCheck(String nickName) {	
+		
+		int nickNameDuplicate = memberService.selectNickNameDuplicate(nickName);
+		
+		return nickNameDuplicate;
+	}
 }

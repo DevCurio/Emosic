@@ -24,8 +24,19 @@
 		from
 			member
 		where
-			id = #{id}
+			member_id = #{id}
 	</select>
+	
+	<select id="selectNickNameDuplicate" resultType="int">
+		select
+			count(*)
+		from
+			member
+		where
+			MEMBER_NICKNAME = #{nickName}
+	</select>
+	
+	
 	
 	<resultMap type="member" id="memberMap">
 		<id column="MEMBER_ID" property="id"/>
