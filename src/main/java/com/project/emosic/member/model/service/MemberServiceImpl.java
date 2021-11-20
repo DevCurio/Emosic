@@ -31,5 +31,10 @@ public class MemberServiceImpl implements MemberService {
 	public int selectNickNameDuplicate(String nickName) {
 		return memberDao.selectNickNameDuplicate(nickName);
 	}
+
+	@Override
+	public Member selectOneMember(String id) {
+		return memberDao.selectOneMember(id);
+	}
 	
 }

@@ -36,7 +36,14 @@
 			MEMBER_NICKNAME = #{nickName}
 	</select>
 	
-	
+	<select id="selectOneMember" resultMap="memberMap">
+		select
+			*
+		from
+			member
+		where
+			member_id = #{id}
+	</select>
 	
 	<resultMap type="member" id="memberMap">
 		<id column="MEMBER_ID" property="id"/>

@@ -19,7 +19,8 @@
 	<div class="container">
         <h1>로그인</h1>
         	<form
-        	action=""
+        	action="${pageContext.request.contextPath}/login/login"
+        	method="post"
         	id="login_info">
 	            <input type="text" name="id" id="id" placeholder="아이디">
 	            <input type="password" name="password" id="pw" placeholder="비밀번호">

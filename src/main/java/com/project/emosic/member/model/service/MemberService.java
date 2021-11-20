@@ -9,4 +9,8 @@ public interface MemberService {
 	int selectIdDuplicate(String id);
 	
 	int selectNickNameDuplicate(String nickName);
+
+	Member selectOneMember(String id);
+	
+	
 }

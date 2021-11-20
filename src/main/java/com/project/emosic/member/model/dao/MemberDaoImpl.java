@@ -30,4 +30,9 @@ public class MemberDaoImpl implements MemberDao {
 	public int selectNickNameDuplicate(String nickName) {
 		return session.selectOne("member.selectNickNameDuplicate", nickName);
 	}
+
+	@Override
+	public Member selectOneMember(String id) {
+		return session.selectOne("member.selectOneMember", id);
+	}
 }
