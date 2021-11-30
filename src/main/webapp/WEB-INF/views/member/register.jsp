@@ -49,7 +49,7 @@
             <input type="password" name="password" id="password" placeholder="비밀번호" required>
             <span class="pw_checked"></span>
 
-            <input type="password" name="password" id="pw_confirm" placeholder="비밀번호 확인" required>
+            <input type="password" name="pw_confirm" id="pw_confirm" placeholder="비밀번호 확인" required>
             <span class="pw_confirm_checked"></span>
             
             <input type="text" name="nickName" id="nickName" placeholder="닉네임" required>
