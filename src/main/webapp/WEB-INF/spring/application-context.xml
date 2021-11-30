@@ -16,77 +16,64 @@
 	<bean class="org.apache.commons.dbcp.BasicDataSource"
 	      id="realDataSource"
 	      destroy-method="close">
-	      
 		<property name="driverClassName" value="${datasource.driver}" />
 		<property name="url" value="${datasource.url}" />
 		<property name="username" value="${datasource.username}" />
 		<property name="password" value="${datasource.password}" />
-	
-	<!-- log4jdbc-remix -->
 	</bean>
-	
+
+	<!-- log4jdbc-remix -->	
 	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-		
 		<constructor-arg ref="realDataSource"/>
-			
 		<property name="logFormatter">
-			
 			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
-		
-			<property name="loggingType" value="MULTI_LINE" />
-            <property name="sqlPrefix" value="[SQL] " />
-            
+				<property name="loggingType" value="MULTI_LINE" />
+            	<property name="sqlPrefix" value="[SQL] " />
             </bean>
-            
 		</property>	
-		
 	</bean>
 	
 	<!-- SqlSessionFactory -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="mapperLocations" value="classpath*:mapper/**/*.xml"/>
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
-		
 	</bean>
 	
 	<!-- SqlSessionTemplate -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-  		<constructor-arg index="0" ref="sqlSessionFactory" />
+  		<constructor-arg index="0" ref="sqlSessionFactoryBean" />
   	</bean>	
 	
 	<!-- spring-security가 제공하는 BCryptPasswordEncoder빈을 등록 -->
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 	
 	<!-- TransactionManager -->
-	<bean id="transactionManager"
-	      class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-	      
-		<property name="dataSource" ref="dataSource"/>
-		
+	<bean 
+		id="transactionManager"
+	    class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>		
 	</bean>
 	
 	<!-- 선언적 트랜잭션 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		
 		<tx:attributes>
-		
 			<tx:method name="select*" rollback-for="Exception" read-only="true"/>
 			<tx:method name="insert*" rollback-for="Exception"/>
 			<tx:method name="update*" rollback-for="Exception"/>
 			<tx:method name="delete*" rollback-for="Exception"/>
-		
 		</tx:attributes>
-	
 	</tx:advice>
 	
 	<!-- 선언적 트랜잭션 aop 설정 -->
 	<aop:config proxy-target-class="true">
-
-		<aop:pointcut id="serviceMethod"  expression="execution(* com.project.emosic..*ServiceImpl.*(..)))" />
-		<aop:advisor id="transactionAdvisor" advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
-	
+		<aop:pointcut 
+			id="serviceMethod"
+			expression="execution(* com.project.emosic..*ServiceImpl.*(..)))" />
+		<aop:advisor
+			id="transactionAdvisor"
+			advice-ref="txAdvice"
+			pointcut-ref="serviceMethod"/>
 	</aop:config>
 	
 </beans>

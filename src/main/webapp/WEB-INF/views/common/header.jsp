@@ -1,18 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<!--tablib-->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>    
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>	
-<!--tablib-->
+
     
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${param.title}</title>
+    
+    <!--home.jsp에서 정의-->
+    <title>${param.title}</title> 
+    
     
     <!-- 사용자작성 css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/header.css">
@@ -21,7 +26,7 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     
    	<!-- 구글 아이콘 -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
 	<!-- bootstrap js: jquery load 이후에 작성할것.-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -46,16 +51,25 @@
 					<li><a href="#" class="nav-link px-2 link-dark">Daily</a></li>
 					<li><a href="#" class="nav-link px-2 link-dark">Notice</a></li>
 				</ul>
-				
+				<!-- 통합 검색 -->
 				<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
 					<input type="search" class="form-control" placeholder="Search..." aria-label="Search">
 				</form>
+				<!-- 로그인 하지 않은 경우 -->
+				<!-- loginMember는 LoginController에서 addObject함 -->
+				<c:if test="${loginMember == null}">
 				<div class="dropdown text-end">
-					<a href="${pageContext.request.contextPath}/login" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-						<span class="material_icons_outlined">login</span>
+					<a href="${pageContext.request.contextPath}/login" class="d-block link-dark text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+						<span class="material-icons-outlined">login</span>
 					</a>
-					<ul></ul>
 				</div>
+				</c:if>
+				<!-- 로그인 한 경우 -->
+				<c:if test="${loginMember != null}">
+				<div class="dropdown text-end">
+					<a href="#"><span>${loginMember.nickName}님, 안녕하세요.</span></a>
+				</div>
+				</c:if>
 			</div>
 		</div>
 	</header>

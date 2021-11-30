@@ -16,7 +16,7 @@ public class Member {
 	private String nickName;
 	private char authority;
 	private String loginType;
-	private Date enrollDate;
+	private String enrollDate;
 	private char enabled;
 	
 }

@@ -3,17 +3,26 @@ package com.project.emosic.member.controller;
 import java.beans.PropertyEditor;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.FlashMap;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.project.emosic.member.model.service.MemberService;
 import com.project.emosic.member.model.vo.Member;
@@ -23,7 +32,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping("/member")
-public class RegisterController {
+@SessionAttributes(value = {"loginMember", "anotherValue"}) //로그인 정보를 담는용도
+public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
@@ -34,29 +44,76 @@ public class RegisterController {
 	@PostMapping("/register")
 	public String registerMember(Member member, RedirectAttributes redirectAttr) {
 	
+		log.info("member = {}", member);
+		
 		try {
 			
 			//비밀번호 암호화
 			String rawPassword = member.getPassword();
-			String bcryptPwd = bcryptPasswordEncoder.encode(rawPassword);
+			String encodedPassword = bcryptPasswordEncoder.encode(rawPassword);
+			log.info("rawPassword = {}", rawPassword);
+			log.info("encodedPassword = {}", encodedPassword);
 			
 			//DB처리
-			member.setPassword(bcryptPwd);
+			member.setPassword(encodedPassword);
 			int result = memberService.insertMember(member);
 			
 			//결과 및 리다이렉트
 			log.info("회원정보 db입력 성공");
+			log.info("id = {}, pw = {}", member.getId(), member.getPassword());
 			String msg = result > 0 ? "회원 등록 성공!" : "회원 등록 실패!";
 			
 			redirectAttr.addFlashAttribute("msg", msg);
-			return "redirect:/";
 			
-		} catch(NullPointerException e) {
+			
+		} catch(Exception e) {
+			log.error(e.getMessage(), e);
 			
 			throw e;			
 		}
 		
+		return "redirect:/";
+	}
+	
+	@PostMapping("/login")
+	public ModelAndView login(
+			@RequestParam String id,
+			@RequestParam String password,
+			ModelAndView mav,			//데이터와 이동페이지를 동시저장 용도
+			HttpServletRequest request	//값을 받아오는 용도
+	) {
 		
+		try {
+			log.info("로그인 정보");
+			log.info("id = {}, password = {}", id, password);
+			log.info("-------------------------------------");
+			//해당 id 조회
+			Member member = memberService.selectOneMember(id);
+			log.info("member = {}", member);
+			
+		
+			//로그인 여부 처리
+			//로그인 성공
+			
+			if(bcryptPasswordEncoder.matches(password, member.getPassword())) {
+				mav.addObject("loginMember", member);
+				
+			}
+			//로그인 실패
+			else {
+				//FlashMap 휘발성으로 spring에서 자동으로 값을 지워줌
+				FlashMap flashMap = RequestContextUtils.getOutputFlashMap(request);
+				flashMap.put("msg", "아이디 혹은 비밀번호가 일치하지 않습니다.");
+			}
+		} catch (Exception e) {
+			//1. logging
+			log.error(e.getMessage(), e);
+			//2. spring container에게 예외를 다시 던져서 error페이지로 이동시킨다.
+			throw e;
+		}
+				
+		mav.setViewName("redirect:/");
+		return mav;
 	}
 	
 	@InitBinder

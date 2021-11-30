@@ -43,6 +43,7 @@
 			member
 		where
 			member_id = #{id}
+			and member_enabled = 'Y'
 	</select>
 	
 	<resultMap type="member" id="memberMap">
