@@ -8,19 +8,16 @@
 
 <fmt:requestEncoding value="utf-8"/>
 <!-- 사용자작성 css -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/myPage.css">
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="Emosic" name="title"/>
 </jsp:include>
 
 <main>
-	<div class="main">
-		<img src="${pageContext.request.contextPath }/resources/images/main/donkey.jpg">
+	<div class="myPage_container">
+		
 	</div>
 </main>
-
-
-	
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

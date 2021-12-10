@@ -27,4 +27,9 @@ public class HomeController {
 		return "/member/register";
 	}
 	
+	@GetMapping("/myPage")
+	public String myPage() {
+		return "/member/myPage";
+	}
+	
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -84,20 +85,13 @@ public class MemberController {
 	) {
 		
 		try {
-			log.info("로그인 정보");
-			log.info("id = {}, password = {}", id, password);
-			log.info("-------------------------------------");
 			//해당 id 조회
 			Member member = memberService.selectOneMember(id);
-			log.info("member = {}", member);
-			
 		
 			//로그인 여부 처리
-			//로그인 성공
-			
+			//로그인 성공			
 			if(bcryptPasswordEncoder.matches(password, member.getPassword())) {
 				mav.addObject("loginMember", member);
-				
 			}
 			//로그인 실패
 			else {
@@ -143,4 +137,15 @@ public class MemberController {
 		
 		return nickNameDuplicate;
 	}
+	
+	@GetMapping("/myPage")
+	public String memberMypage(String id, Model model) {
+		
+		Member member = memberService.selectOneMember(id);
+		
+		model.addAttribute("member",member);
+		
+		return "/member/myPage";
+	}
+	
 }
