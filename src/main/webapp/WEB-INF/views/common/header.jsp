@@ -75,7 +75,7 @@
 	            	<li><a class="dropdown-item" href="#">게시물 작성</a></li>
 	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">프로필</a></li>
 	            	<li><hr class="dropdown-divider"></li>
-	            	<li><a class="dropdown-item" href="#">로그아웃</a></li>
+	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
 				</ul>				
 			</div>
 			</c:if>

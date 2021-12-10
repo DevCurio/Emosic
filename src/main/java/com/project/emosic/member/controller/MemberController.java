@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.FlashMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -110,6 +111,13 @@ public class MemberController {
 		return mav;
 	}
 	
+	@GetMapping("/logout")
+	public String logout(SessionStatus sessionStatus) {
+		if(!sessionStatus.isComplete())
+			sessionStatus.setComplete();
+		
+		return "redirect:/";
+	}
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		//Member.enrollDate:java.sql.Date 타입 처리
