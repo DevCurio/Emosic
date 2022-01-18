@@ -1,16 +1,15 @@
 package com.project.emosic.member.model.service;
 
-import com.project.emosic.member.model.vo.Member;
+import com.project.emosic.member.model.vo.User;
 
 public interface MemberService {
 
-	int insertMember(Member member);
-
+	int insertUser(User user);
+	
 	int selectIdDuplicate(String id);
 	
 	int selectNickNameDuplicate(String nickName);
 
-	Member selectOneMember(String id);
-	
+	User selectOneUser(String id);
 	
 }

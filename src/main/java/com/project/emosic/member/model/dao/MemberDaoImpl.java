@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.project.emosic.member.model.vo.Member;
+import com.project.emosic.member.model.vo.User;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,25 +14,26 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Autowired
 	private SqlSession session;
-
+	
 	@Override
-	public int insertMember(Member member) {
-		return session.insert("member.insertMember", member);
+	public int insertUser(User user) {
+		return session.insert("user.insertUser", user);
 	}
 
 	@Override
 	public int selectIdDuplicate(String id) {
-		
-		return session.selectOne("member.selectIdDuplicate", id);
+		return session.selectOne("user.selectIdDuplicate", id);
 	}
 
 	@Override
 	public int selectNickNameDuplicate(String nickName) {
-		return session.selectOne("member.selectNickNameDuplicate", nickName);
+		return session.selectOne("user.selectNickNameDuplicate", nickName);
 	}
 
 	@Override
-	public Member selectOneMember(String id) {
-		return session.selectOne("member.selectOneMember", id);
+	public User selectUser(String id) {
+		return session.selectOne("user.selectOneUser", id);
 	}
+	
+
 }

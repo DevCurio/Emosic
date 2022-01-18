@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="member">
+<mapper namespace="user">
 
-	<insert id="insertMember">
+	<insert id="insertUser">
 		insert into
 			member
 		values (
@@ -24,7 +24,7 @@
 		from
 			member
 		where
-			member_id = #{id}
+			user_id = #{id}
 	</select>
 	
 	<select id="selectNickNameDuplicate" resultType="int">
@@ -33,27 +33,27 @@
 		from
 			member
 		where
-			MEMBER_NICKNAME = #{nickName}
+			user_nickName = #{nickName}
 	</select>
 	
-	<select id="selectOneMember" resultMap="memberMap">
+	<select id="selectOneUser" resultMap="memberMap">
 		select
 			*
 		from
 			member
 		where
-			member_id = #{id}
-			and member_enabled = 'Y'
+			user_id = #{id}
+			and user_enabled = 'Y'
 	</select>
 	
-	<resultMap type="member" id="memberMap">
-		<id column="MEMBER_ID" property="id"/>
-		<result column="MEMBER_PASSWORD" property="password"/>
-		<result column="MEMBER_NICKNAME" property="nickName"/>
-		<result column="MEMBER_AUTHORITY" property="authority"/>
-		<result column="MEMBER_REGI_DATE" property="enrollDate"/>
-		<result column="MEMBER_LOGIN_TYPE" property="loginType"/>
-		<result column="MEMBER_ENABLED" property="enabled"/>
+	<resultMap type="user" id="memberMap">
+		<id column="USER_ID" property="id"/>
+		<result column="USER_PASSWORD" property="password"/>
+		<result column="USER_NICKNAME" property="nickName"/>
+		<result column="USER_AUTHORITY" property="authority"/>
+		<result column="USER_REGI_DATE" property="regiDate"/>
+		<result column="USER_LOGIN_TYPE" property="loginType"/>
+		<result column="USER_ENABLED" property="enabled"/>
 	</resultMap>
 	
 </mapper>

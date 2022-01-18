@@ -12,7 +12,7 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.project.emosic.member.model.vo.Member" alias="member"/>
+		<typeAlias type="com.project.emosic.member.model.vo.User" alias="user"/>
 		<package name="com.project.emosic"/>
 		
 	</typeAliases>

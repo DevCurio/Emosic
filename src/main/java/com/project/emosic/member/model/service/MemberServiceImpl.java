@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.emosic.member.model.dao.MemberDao;
-import com.project.emosic.member.model.vo.Member;
+import com.project.emosic.member.model.vo.User;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,16 +14,14 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberDao memberDao;
-
+	
 	@Override
-	public int insertMember(Member member) {
-		
-		return memberDao.insertMember(member);
+	public int insertUser(User user) {
+		return memberDao.insertUser(user);
 	}
 
 	@Override
 	public int selectIdDuplicate(String id) {
-		
 		return memberDao.selectIdDuplicate(id);
 	}
 
@@ -33,8 +31,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Member selectOneMember(String id) {
-		return memberDao.selectOneMember(id);
+	public User selectOneUser(String id) {
+		return memberDao.selectUser(id);
 	}
 	
 }

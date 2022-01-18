@@ -27,7 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.project.emosic.member.model.service.MemberService;
-import com.project.emosic.member.model.vo.Member;
+import com.project.emosic.member.model.vo.User;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,25 +44,25 @@ public class MemberController {
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	@PostMapping("/register")
-	public String registerMember(Member member, RedirectAttributes redirectAttr) {
+	public String registerMember(User user, RedirectAttributes redirectAttr) {
 	
-		log.info("member = {}", member);
+		log.info("user = {}", user);
 		
 		try {
 			
 			//비밀번호 암호화
-			String rawPassword = member.getPassword();
+			String rawPassword = user.getPassword();
 			String encodedPassword = bcryptPasswordEncoder.encode(rawPassword);
 			log.info("rawPassword = {}", rawPassword);
 			log.info("encodedPassword = {}", encodedPassword);
 			
 			//DB처리
-			member.setPassword(encodedPassword);
-			int result = memberService.insertMember(member);
+			user.setPassword(encodedPassword);
+			int result = memberService.insertUser(user);
 			
 			//결과 및 리다이렉트
 			log.info("회원정보 db입력 성공");
-			log.info("id = {}, pw = {}", member.getId(), member.getPassword());
+			log.info("id = {}, pw = {}", user.getId(), user.getPassword());
 			String msg = result > 0 ? "회원 등록 성공!" : "회원 등록 실패!";
 			
 			redirectAttr.addFlashAttribute("msg", msg);
@@ -87,12 +87,12 @@ public class MemberController {
 		
 		try {
 			//해당 id 조회
-			Member member = memberService.selectOneMember(id);
+			User user = memberService.selectOneUser(id);
 		
 			//로그인 여부 처리
 			//로그인 성공			
-			if(bcryptPasswordEncoder.matches(password, member.getPassword())) {
-				mav.addObject("loginMember", member);
+			if(bcryptPasswordEncoder.matches(password, user.getPassword())) {
+				mav.addObject("loginMember", user);
 			}
 			//로그인 실패
 			else {
@@ -149,9 +149,9 @@ public class MemberController {
 	@GetMapping("/myPage")
 	public String memberMypage(String id, Model model) {
 		
-		Member member = memberService.selectOneMember(id);
+		User user = memberService.selectOneUser(id);
 		
-		model.addAttribute("member",member);
+		model.addAttribute("user",user);
 		
 		return "/member/myPage";
 	}

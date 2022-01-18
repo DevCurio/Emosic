@@ -1,22 +1,20 @@
 package com.project.emosic.member.model.vo;
 
-import java.util.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member {
+@Data
+public class User {
 	
 	private String id;
 	private String password;
 	private String nickName;
-	private char authority;
+	private String authority;
 	private String loginType;
-	private String enrollDate;
-	private char enabled;
+	private String regiDate;
+	private String enabled;
 	
 }

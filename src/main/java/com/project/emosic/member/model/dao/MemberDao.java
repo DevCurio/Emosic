@@ -1,16 +1,15 @@
 package com.project.emosic.member.model.dao;
 
-import com.project.emosic.member.model.vo.Member;
+import com.project.emosic.member.model.vo.User;
 
 public interface MemberDao {
 
-	int insertMember(Member member);
-
+	int insertUser(User user);
+	
 	int selectIdDuplicate(String id);
 
 	int selectNickNameDuplicate(String nickName);
 
-	Member selectOneMember(String id);
-
+	User selectUser(String id);
 	
 }
