@@ -1,0 +1,29 @@
+#storyList_container {
+	
+}
+
+.list-num{
+	width: 7%;
+}
+.list-category {
+	width: 10%
+}
+.list-title{
+	width: 50%;
+}
+
+.list-nickName{
+	width: 15%;
+}
+
+.list-views{
+	width: 8%;
+}
+
+.list-date{
+	width: 10%;
+}
+
+.table tr, th{
+	text-align: center;
+}

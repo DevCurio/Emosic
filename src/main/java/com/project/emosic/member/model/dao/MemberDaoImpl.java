@@ -1,6 +1,6 @@
 package com.project.emosic.member.model.dao;
 
-import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberDaoImpl implements MemberDao {
 
 	@Autowired
-	private SqlSession session;
+	private SqlSessionTemplate session;
 	
 	@Override
 	public int insertUser(User user) {

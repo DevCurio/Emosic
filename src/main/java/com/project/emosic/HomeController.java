@@ -1,5 +1,6 @@
 package com.project.emosic;
 
+import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,4 +33,13 @@ public class HomeController {
 		return "/member/myPage";
 	}
 	
+	@GetMapping("/storyList")
+	public String storyList() {
+		return "/board/storyList";
+	}
+	
+	@GetMapping("/storyReg")
+	public String storyReg() {
+		return "/board/storyReg";
+	}
 }

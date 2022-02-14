@@ -47,9 +47,8 @@
 		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 			<a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"></a>
 			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-				<li><a href="#" class="nav-link px-2 link-secondary">Emosic</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark">PlayList</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark">Daily</a></li>
+				<li><a href="${pageContext.request.contextPath}/" class="nav-link px-2 link-secondary">Emosic</a></li>
+				<li><a href="${pageContext.request.contextPath}/storyList" class="nav-link px-2 link-dark">Story</a></li>
 				<li><a href="#" class="nav-link px-2 link-dark">Notice</a></li>
 			</ul>
 			<!-- 통합 검색 -->
@@ -72,7 +71,7 @@
 					<img src="resources/images/header/profile/cat.png" alt="프로필" class="rounded-circle" width="40px" height="40px">
 				</a>
 				<ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-	            	<li><a class="dropdown-item" href="#">게시물 작성</a></li>
+	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/storyReg">게시물 작성</a></li>
 	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">프로필</a></li>
 	            	<li><hr class="dropdown-divider"></li>
 	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>

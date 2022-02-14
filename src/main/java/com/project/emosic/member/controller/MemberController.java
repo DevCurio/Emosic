@@ -91,7 +91,7 @@ public class MemberController {
 		
 			//로그인 여부 처리
 			//로그인 성공			
-			if(bcryptPasswordEncoder.matches(password, user.getPassword())) {
+			if(user != null && bcryptPasswordEncoder.matches(password, user.getPassword())) {
 				mav.addObject("loginMember", user);
 			}
 			//로그인 실패

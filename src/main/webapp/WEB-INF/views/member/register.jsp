@@ -55,7 +55,7 @@
             <input type="text" name="nickName" id="nickName" placeholder="닉네임" required>
             <span class="nickName_checked"></span>
   
-            <button type="button" class="reg_btn" id="reg_btn">회원가입</button>
+            <button type="submit" class="reg_btn" id="reg_btn">회원가입</button>
         </form>
     </div>
     
