@@ -31,10 +31,11 @@ import com.project.emosic.member.model.vo.User;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+
 @Controller
 @RequestMapping("/member")
 @SessionAttributes(value = {"loginMember", "anotherValue"}) //로그인 정보를 담는용도
+@Slf4j
 public class MemberController {
 	
 	@Autowired

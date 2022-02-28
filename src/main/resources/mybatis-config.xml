@@ -5,22 +5,17 @@
 <configuration>
 
 	<settings>
-	
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 		<setting name="jdbcTypeForNull" value="NULL"/>
-		
 	</settings>
 	
 	<typeAliases>
 		<typeAlias type="com.project.emosic.member.model.vo.User" alias="user"/>
 		<package name="com.project.emosic"/>
-		
 	</typeAliases>
 	
   	<typeHandlers>
-  	
    		<package name="com.project.emosic.common.typehandler" />
-   		
   	</typeHandlers>
   	
 </configuration>

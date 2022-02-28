@@ -1,6 +1,9 @@
 package com.project.emosic.board.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,6 +36,25 @@ public class BoardController {
 						@RequestParam(defaultValue = "1") int cPage,
 						Model model,
 						HttpServletRequest request) {
+		
+		//1. 설정값
+		int numPerPage = 5;
+		log.debug("cPage = {}", cPage);
+		
+		Map<String, Object> param = new HashMap<>();
+		param.put("numPerPage", numPerPage);
+		param.put("cPage", cPage);
+		
+		List<Board> list = boardService.selectBoardList(param);
+		log.debug("list = {}", list);
+		
+		//2.pagebar
+		//int totalContents = boardService.getTotalContents();
+		//String pageBar = HelloSpringUtils.getPageBar(totalContents, cPage, numPerPage, url);
+		
+		//2. jsp처리 위임
+		model.addAttribute("list", list);
+		
 	}
 	
 	@PostMapping("/storyReg")
@@ -47,13 +69,13 @@ public class BoardController {
 			int result = boardService.insertBoard(board);
 			
 			String msg = result > 0 ? "게시물 등록 성공!" : "게시물 등록 실패!";
+			redirectAttr.addFlashAttribute("msg", msg);
 			
 		}catch (Exception e) {
 			log.error("게시물 등록 오류!", e);
 			throw e;
 		}
 		
-		
-		return "redirect:/storyList";
+		return "redirect:/board/storyList";
 	}
 }

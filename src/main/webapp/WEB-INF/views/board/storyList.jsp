@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.project.emosic.board.model.vo.Board, java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>    
@@ -19,20 +20,25 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="list-num">번호</th>
+					<th class="list-no">번호</th>
 					<th class="list-category">카테고리</th>
 					<th class="list-title">제목</th>
 					<th class="list-nickName">작성자</th>
-					<th class="list-views">조회수</th>
+					<th class="list-viewCount">조회수</th>
 					<th class="list-date">작성일</th>
 				</tr>
 			</thead>
 			<tbody>
-			<c:if test="${list != null}">
-				<c:forEach items="${list}" var="post">
-					
+				<c:forEach items="${list}" var="board">
+					<tr data-no="${board.no}">
+						<td>${board.no}</td>
+						<td>${board.category}</td>
+						<td>${board.title}</td>
+						<td>${board.userId}</td>
+						<td>${board.viewCount}</td>
+						<td><fmt:formatDate value="${board.writeDate}" pattern="yy/MM/dd"/></td>
+					</tr>
 				</c:forEach>
-			</c:if>
 			</tbody>
 		</table>
 	</div>

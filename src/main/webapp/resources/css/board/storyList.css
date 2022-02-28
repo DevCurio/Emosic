@@ -2,13 +2,13 @@
 	
 }
 
-.list-num{
+.list-no {
 	width: 7%;
 }
 .list-category {
 	width: 10%
 }
-.list-title{
+.list-title {
 	width: 50%;
 }
 
@@ -16,7 +16,7 @@
 	width: 15%;
 }
 
-.list-views{
+.list-viewCount{
 	width: 8%;
 }
 

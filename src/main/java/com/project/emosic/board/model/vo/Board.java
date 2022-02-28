@@ -1,5 +1,7 @@
 package com.project.emosic.board.model.vo;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,8 +16,8 @@ public class Board {
 	private String title;
 	private String userId;
 	private String contents;
-	private String writeDate;
-	private int readCount;
+	private Date writeDate;
+	private int viewCount;
 	private int likeCount;
 	
 	//private int attachCount;	//첨부파일 갯수

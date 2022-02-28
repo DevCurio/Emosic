@@ -28,7 +28,14 @@
 	
 	</insert>
 	
-	
+	<select id="selectBoardList" resultType="board">
+		select
+			no, category, title, user_id, view_count, write_date
+		from
+			board
+		order by
+			no desc
+	</select>
 	
 	<resultMap type="board" id="boardMap">
 		<id column="no" property="no"/>
@@ -37,9 +44,8 @@
 		<result column="user_id" property="userId"/>
 		<result column="contents" property="contents"/>
 		<result column="write_date" property="writeDate"/>
-		<result column="read_count" property="readCount"/>
+		<result column="view_count" property="viewCount"/>
 		<result column="like_count" property="likeCount"/>
-		
 	</resultMap>
 		
 </mapper>

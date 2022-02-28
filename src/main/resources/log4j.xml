@@ -10,9 +10,23 @@
 		</layout>
 	</appender>
 	
+	<appender name="loginLogger" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${catalina.base}/logs/emotion/logins/login-logger.log" />
+		<param name="append" value="true"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %-5p: %m%n" />
+		</layout>
+	</appender>
+	
+	
 	<!-- Application Loggers -->
 	<logger name="com.project.emosic">
-		<level value="info" />
+		<level value="debug" />
+	</logger>
+	
+	<logger name="com.project.emosic.common.aop" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="loginLogger"/>
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
