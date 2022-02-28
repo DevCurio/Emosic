@@ -48,7 +48,7 @@
 			<a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"></a>
 			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 				<li><a href="${pageContext.request.contextPath}/" class="nav-link px-2 link-secondary">Emosic</a></li>
-				<li><a href="${pageContext.request.contextPath}/storyList" class="nav-link px-2 link-dark">Story</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/storyList" class="nav-link px-2 link-dark">Story</a></li>
 				<li><a href="#" class="nav-link px-2 link-dark">Notice</a></li>
 			</ul>
 			<!-- 통합 검색 -->
@@ -68,7 +68,7 @@
 			<c:if test="${loginMember != null}">
 			<div class="dropdown text-end">
 				<a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-					<img src="resources/images/header/profile/cat.png" alt="프로필" class="rounded-circle" width="40px" height="40px">
+					<img src="${pageContext.request.contextPath}/resources/images/header/profile/cat.png" alt="프로필" class="rounded-circle" width="40px" height="40px">
 				</a>
 				<ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
 	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/storyReg">게시물 작성</a></li>

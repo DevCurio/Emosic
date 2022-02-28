@@ -33,10 +33,10 @@ public class HomeController {
 		return "/member/myPage";
 	}
 	
-//	@GetMapping("/storyList")
-//	public String storyList() {
-//		return "/board/storyList";
-//	}
+	@GetMapping("/storyList")
+	public String storyList() {
+		return "/board/storyList";
+	}
 	
 	@GetMapping("/storyReg")
 	public String storyReg() {
