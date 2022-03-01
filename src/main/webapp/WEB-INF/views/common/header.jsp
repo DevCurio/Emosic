@@ -71,7 +71,7 @@
 					<img src="${pageContext.request.contextPath}/resources/images/header/profile/cat.png" alt="프로필" class="rounded-circle" width="40px" height="40px">
 				</a>
 				<ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/storyReg">게시물 작성</a></li>
+	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/storyReg">사연 작성</a></li>
 	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">프로필</a></li>
 	            	<li><hr class="dropdown-divider"></li>
 	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>

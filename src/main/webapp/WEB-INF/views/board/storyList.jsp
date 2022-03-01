@@ -10,6 +10,8 @@
 <fmt:requestEncoding value="utf-8"/>
 <!-- 사용자작성 css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board/storyList.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/board/storyList.js">
+
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="Emosic" name="title"/>
@@ -44,4 +46,16 @@
 	</div>
 </section>
 
+<script>
+//목록 상세보기
+$("tr[list-no]").click(function(){
+
+	var $tr = $(event.target).parent();
+	var no = $tr.data("no");
+	
+	location.href = `${pageContext.request.contextPath}/board/storyDetail?no=\${no}`;
+
+
+});
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

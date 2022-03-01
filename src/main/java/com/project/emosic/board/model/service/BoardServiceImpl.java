@@ -34,5 +34,10 @@ public class BoardServiceImpl implements BoardService {
 	public int getTotalContents() {
 		return boardDao.getTotalContents();
 	}
+
+	@Override
+	public Board selectOneBoardCollection(int no) {
+		return boardDao.selectOneBoardCollection(no);
+	}
 	
 }

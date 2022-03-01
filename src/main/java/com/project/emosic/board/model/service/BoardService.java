@@ -13,4 +13,7 @@ public interface BoardService {
 
 	int getTotalContents();
 
+	Board selectOneBoardCollection(int no);
+
+
 }

@@ -78,4 +78,14 @@ public class BoardController {
 		
 		return "redirect:/board/storyList";
 	}
+	
+	@GetMapping("/storyDetail")
+	public void storyDetail(@RequestParam int no, Model model) {
+		
+		Board board = boardService.selectOneBoardCollection(no);
+		log.debug("board = {}", board);
+		
+		model.addAttribute("board", board);
+	}
+	
 }

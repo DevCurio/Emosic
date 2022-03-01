@@ -13,4 +13,6 @@ public interface BoardDao {
 
 	int getTotalContents();
 
+	Board selectOneBoardCollection(int no);
+
 }

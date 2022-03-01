@@ -37,7 +37,16 @@
 			no desc
 	</select>
 	
-	<resultMap type="board" id="boardMap">
+	<select id="selectOneBoardCollection" resultMap="boardCollectionMap">
+		select
+			*
+		from
+			board
+		where
+			no = #{no}
+	</select>
+	
+	<resultMap type="board" id="boardCollectionMap">
 		<id column="no" property="no"/>
 		<result column="category" property="category"/>
 		<result column="title" property="title"/>
