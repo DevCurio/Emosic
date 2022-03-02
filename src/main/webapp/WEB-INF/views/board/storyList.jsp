@@ -35,7 +35,7 @@
 					<tr data-no="${board.no}">
 						<td>${board.no}</td>
 						<td>${board.category}</td>
-						<td>${board.title}</td>
+						<td><a href="${pageContext.request.contextPath}/board/storyDetail?no=${board.no}">${board.title}</a></td>
 						<td>${board.userId}</td>
 						<td>${board.viewCount}</td>
 						<td><fmt:formatDate value="${board.writeDate}" pattern="yy/MM/dd"/></td>
@@ -46,16 +46,4 @@
 	</div>
 </section>
 
-<script>
-//목록 상세보기
-$("tr[list-no]").click(function(){
-
-	var $tr = $(event.target).parent();
-	var no = $tr.data("no");
-	
-	location.href = `${pageContext.request.contextPath}/board/storyDetail?no=\${no}`;
-
-
-});
-</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

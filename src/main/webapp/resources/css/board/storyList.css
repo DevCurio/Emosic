@@ -3,25 +3,25 @@
 }
 
 .list-no {
-	width: 7%;
+	width: 5%;
 }
 .list-category {
-	width: 10%
+	width: 7%
 }
 .list-title {
-	width: 50%;
+	width: 64%;
 }
 
 .list-nickName{
-	width: 15%;
+	width: 10%;
 }
 
 .list-viewCount{
-	width: 8%;
+	width: 6%;
 }
 
 .list-date{
-	width: 10%;
+	width: 8%;
 }
 
 .table tr, th{
