@@ -26,19 +26,31 @@
 
 .userId{
 	width: 10%;
-	float: right;
+	float: left;
 	text-align: center;
 }
 
 .viewCount{
 	width: 5%;
 	float: right;
-	text-align: center;
+	text-align: left;
+	padding: 0 5px;
 }
 .writeDate{
 	width: 10%;
 	float: right;
 	text-align: center;
+}
+
+.material-icons{
+	float: right;
+}
+
+.likeCount{
+	width: 5%;
+	float: right;
+	text-align: left;
+	padding: 0 5px;
 }
 
 #contents_container{

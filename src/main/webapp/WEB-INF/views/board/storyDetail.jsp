@@ -25,23 +25,30 @@
 			
 			<hr>
 			
-			<div class="story-category">
+			<%-- <div class="story-category">
 				<c:out value="${board.category}"/>
+			</div> --%>
+			<div class="userId">
+				<c:out value="${board.userId}"/>
 			</div>
 			
 			<div class="info-right">
-			
+				
+				
 				<div class="writeDate">
 					<fmt:formatDate value="${board.writeDate}" pattern="yy/MM/dd"/>
 				</div>
+				<span class="material-icons">access_time_filled</span>
 				
 				<div class="viewCount">
 					<c:out value="${board.viewCount}"></c:out>
 				</div>
-				
-				<div class="userId">
-					<c:out value="${board.userId}"/>
+				<span class="material-icons">visibility</span>
+
+				<div class="likeCount">
+					<c:out value="${board.likeCount}"></c:out>
 				</div>
+				<span class="material-icons">thumb_up_off_alt</span>
 				
 			</div>
 			
