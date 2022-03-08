@@ -17,15 +17,52 @@
 <section>
 	<div id="storyDetail">
 
-		<input type="text" class="story-category" placeholder="카테고리" value="${board.category}" readonly required>
+		<div class="storyInfo">
+			
+			<div class="storyTitle">
+				<c:out value="${board.title}" />
+			</div>
+			
+			<hr>
+			
+			<div class="story-category">
+				<c:out value="${board.category}"/>
+			</div>
+			
+			<div class="info-right">
+			
+				<div class="writeDate">
+					<fmt:formatDate value="${board.writeDate}" pattern="yy/MM/dd"/>
+				</div>
+				
+				<div class="viewCount">
+					<c:out value="${board.viewCount}"></c:out>
+				</div>
+				
+				<div class="userId">
+					<c:out value="${board.userId}"/>
+				</div>
+				
+			</div>
+			
+			<br>
+			<hr>
+			
+			<div id="contents_container">
+				<input type="text" class="contents" value="${board.contents}" readonly>
+			</div>
 		
-		<input type="text" class="storyTitle" name="title" value="${board.title}" readonly required>
-		<input type="text" class="input_userId" name="userId" value="${loginMember.id}" readonly required>
-		<div id="contents_container">
-			<input type="text" value="${board.contents}" readonly>
 		</div>
 		
+		<br>
+		
+		<div class="re-musicList">
+			<div class="search">
+				<input type="text"	class="search-music" placeholder="추천 음악 검색하기">
+			</div>
+		</div>
 	</div>
+	
 </section>
 
 

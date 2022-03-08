@@ -3,13 +3,13 @@
 }
 
 .list-no {
-	width: 5%;
+	width: 6%;
 }
 .list-category {
-	width: 7%
+	width: 10%
 }
 .list-title {
-	width: 64%;
+	width: 58%;
 }
 
 .list-nickName{
@@ -17,7 +17,7 @@
 }
 
 .list-viewCount{
-	width: 6%;
+	width: 8%;
 }
 
 .list-date{

@@ -1,0 +1,76 @@
+.storyInfo {
+	width: 100%;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 20px 20px;
+	
+}
+
+.storyTitle{
+	width: 100%;
+	height: 50px;
+	font-size: 2.5rem;
+}
+
+.story-category{
+	width: 10%;
+	float: left;
+	text-align: center;
+}
+
+.info-right{
+	width: 90%;
+	height: 20px;
+	float: right;
+}
+
+.userId{
+	width: 10%;
+	float: right;
+	text-align: center;
+}
+
+.viewCount{
+	width: 5%;
+	float: right;
+	text-align: center;
+}
+.writeDate{
+	width: 10%;
+	float: right;
+	text-align: center;
+}
+
+#contents_container{
+	width: 100%;
+	padding: 10px 1px;
+}
+
+.contents{
+	width: 100%;
+	height: 100px;
+}
+
+.re-musicList{
+	width: 100%;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 20px 20px;
+}
+
+.search-music{
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #CCC;
+	color: #555;
+	box-sizing: border-box;
+	font-family: 'Arvo';
+	font-size: 18px;
+	top: 50%;
+	width: 100%;
+	
+}
+
+.search-music:focus {
+    outline: none;    
+  }

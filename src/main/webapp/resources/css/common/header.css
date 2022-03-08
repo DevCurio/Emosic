@@ -1,7 +1,15 @@
 section {
-	width: 70%;
+	width: 50%;
 	height: 90vh;
 	margin: 0 auto;
+}
+
+.home{
+	font-size: 2rem;
+}
+
+.story, .notice{
+	margin-top: 20px;
 }
 #content{
 	width: 100%;

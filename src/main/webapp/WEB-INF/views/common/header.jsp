@@ -47,9 +47,9 @@
 		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 			<a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"></a>
 			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-				<li><a href="${pageContext.request.contextPath}/" class="nav-link px-2 link-secondary">Emosic</a></li>
-				<li><a href="${pageContext.request.contextPath}/board/storyList" class="nav-link px-2 link-dark">Story</a></li>
-				<li><a href="#" class="nav-link px-2 link-dark">Notice</a></li>
+				<li><a href="${pageContext.request.contextPath}/" class="nav-link px-2 link-secondary home">Emosic</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/storyList" class="nav-link px-2 link-dark story">STORY</a></li>
+				<li><a href="#" class="nav-link px-2 link-dark notice">NOTICE</a></li>
 			</ul>
 			<!-- 통합 검색 -->
 			<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
