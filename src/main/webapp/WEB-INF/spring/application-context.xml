@@ -55,6 +55,11 @@
 		<property name="dataSource" ref="dataSource"/>		
 	</bean>
 	
+	<!-- 파일 업로드 라이브러리 -->
+	<bean id="filterMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="20971520" />
+    </bean>
+	
 	<!-- 선언적 트랜잭션 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>

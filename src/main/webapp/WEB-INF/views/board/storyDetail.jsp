@@ -38,7 +38,7 @@
 				<div class="writeDate">
 					<fmt:formatDate value="${board.writeDate}" pattern="yy/MM/dd"/>
 				</div>
-				<span class="material-icons">access_time_filled</span>
+				<span class="material-icons">schedule</span>
 				
 				<div class="viewCount">
 					<c:out value="${board.viewCount}"></c:out>
@@ -67,9 +67,16 @@
 			<div class="search">
 				<input type="text"	class="search-music" placeholder="추천 음악 검색하기">
 			</div>
+			
 		</div>
+		
+		<div class="list">
+			<ul class="recommend-music">
+				<li></li>
+			</ul>
+		</div>
+		
 	</div>
-	
 </section>
 
 
