@@ -24,12 +24,12 @@
         	method="post"
         	id="login_info">
 	            <input type="text" name="id" id="id" placeholder="아이디">
-	            <input type="password" name="password" id="pw" placeholder="비밀번호">
+	            <input type="password" name="password" id="password" placeholder="비밀번호">
 	            
 	            <button type="submit" id="login_btn">로그인</button>
 	
-	            <input type="checkbox" name="id_save" id="id_save">
-	            <span class="id_save_text">아이디 저장</span>
+	            <input type="checkbox" name="remember-me" id="remember-me">
+	            <span class="remember-me_text">아이디 저장</span>
         	</form>
         
         

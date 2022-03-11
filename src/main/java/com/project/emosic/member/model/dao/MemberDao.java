@@ -11,5 +11,6 @@ public interface MemberDao {
 	int selectNickNameDuplicate(String nickName);
 
 	User selectUser(String id);
-	
+
+	User selectOneMember(String id);
 }

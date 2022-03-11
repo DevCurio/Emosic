@@ -12,8 +12,6 @@
 				#{password},
 				#{nickName},
 				default,
-				default,
-				default,
 				default
 				)
 	</insert>
@@ -24,7 +22,7 @@
 		from
 			member
 		where
-			user_id = #{id}
+			id = #{id}
 	</select>
 	
 	<select id="selectNickNameDuplicate" resultType="int">
@@ -33,7 +31,14 @@
 		from
 			member
 		where
-			user_nickName = #{nickName}
+			nickName = #{nickName}
+	</select>
+	
+	<select id="user" resultType="user">
+		select
+			*
+		from
+			member
 	</select>
 	
 	<select id="selectOneUser" resultMap="memberMap">
@@ -42,18 +47,17 @@
 		from
 			member
 		where
-			user_id = #{id}
-			and user_enabled = 'Y'
+			id = #{id}
 	</select>
 	
 	<resultMap type="user" id="memberMap">
-		<id column="USER_ID" property="id"/>
-		<result column="USER_PASSWORD" property="password"/>
-		<result column="USER_NICKNAME" property="nickName"/>
-		<result column="USER_AUTHORITY" property="authority"/>
-		<result column="USER_REGI_DATE" property="regiDate"/>
-		<result column="USER_LOGIN_TYPE" property="loginType"/>
-		<result column="USER_ENABLED" property="enabled"/>
+		<id column="ID" property="id"/>
+		<result column="PASSWORD" property="password"/>
+		<result column="NICKNAME" property="nickName"/>
+		<result column="REGI_DATE" property="regiDate"/>
+		<result column="ENABLED" property="enabled"/>
+		<result column="AUTHORITY" property="authority"/>
+		<result column="LOGIN_TYPE" property="loginType"/>
 	</resultMap>
 	
 </mapper>

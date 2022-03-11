@@ -34,6 +34,11 @@ public class MemberDaoImpl implements MemberDao {
 	public User selectUser(String id) {
 		return session.selectOne("user.selectOneUser", id);
 	}
+
+	@Override
+	public User selectOneMember(String id) {
+		return session.selectOne("member.selectOneMember", id);
+	}
 	
 
 }

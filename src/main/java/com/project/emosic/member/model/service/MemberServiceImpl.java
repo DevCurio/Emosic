@@ -1,6 +1,8 @@
 package com.project.emosic.member.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.project.emosic.member.model.dao.MemberDao;
@@ -33,6 +35,15 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public User selectOneUser(String id) {
 		return memberDao.selectUser(id);
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
+		User user = memberDao.selectOneMember(id);
+		log.debug("user = {}", user);
+		if(user == null)
+			throw new UsernameNotFoundException(id);
+		return user;
 	}
 	
 }

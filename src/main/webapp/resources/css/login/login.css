@@ -13,7 +13,7 @@ body {
     width: 420px;
     margin: 0 auto;
 }
-#id, #pw {
+#id, #password {
     width: 400px;
     height: 40px;
 }
@@ -27,11 +27,11 @@ body {
 #login_btn:hover {
     cursor: pointer;
 }
-#id_save {
+#remember-me {
     float: left;
     margin-top: 10px;
 }
-.id_save_text {
+.remember-me_text {
     float: left;
     margin-top: 6px;
 }
