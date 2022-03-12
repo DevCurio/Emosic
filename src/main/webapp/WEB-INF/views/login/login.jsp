@@ -28,8 +28,9 @@
 	            
 	            <button type="submit" id="login_btn">로그인</button>
 	
+	            <label for="remember-me" class="remember-me_text">로그인 유지</label>
 	            <input type="checkbox" name="remember-me" id="remember-me">
-	            <span class="remember-me_text">아이디 저장</span>
+	            
         	</form>
         
         

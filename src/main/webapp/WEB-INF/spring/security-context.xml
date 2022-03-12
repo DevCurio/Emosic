@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	
+	<bean id="securityDaoBean" class="com.project.emosic.security.dao.SecurityDao">
+		<property name="session" ref="sqlSession"></property>
+	</bean>
+	
+	<bean id="securityService" class="com.project.emosic.security.service.SecurityService">
+		<property name="securityDao" ref="securityDaoBean"></property>
+	</bean>
+	
+	<bean id="deniedHandler" class="com.project.emosic.security.handler.LoginFailHandler"></bean>
+	
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/" access="permitAll"/>
+		
+		<security:intercept-url pattern="/login" access="isAnonymous()"/>
+		<security:intercept-url pattern="/login" access="isAnonymous()"/>
+		
+		<security:intercept-url pattern="/" access="hasRole('ROLE_USER')"/>		
+		<security:intercept-url pattern="/member/**" access="hasRole('ROLE_USER')"/>		
+		<security:intercept-url pattern="/board/**" access="hasRole('ROLE_USER')"/>
+		
+		<security:form-login login-page="/login"
+		                     login-processing-url="/login"
+		                     default-target-url="/home"
+		                     username-parameter="username"
+		                     password-parameter="password"
+		                     authentication-failure-handler-ref="deniedHandler"/>
+	
+		<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
+		
+		<security:logout logout-url="/logout" 
+		                 invalidate-session="true"
+		                 logout-success-url="/"
+		                 delete-cookies="remember-me, JSESSION_ID"/>
+	</security:http>
+	
+	<security:authentication-manager>
+	
+		<security:authentication-provider user-service-ref="securityService">
+			
+			<security:password-encoder ref="bcryptPasswordEncoder"/>
+			
+		</security:authentication-provider>
+		
+	</security:authentication-manager>
+</beans>

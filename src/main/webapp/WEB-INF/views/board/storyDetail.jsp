@@ -25,9 +25,6 @@
 			
 			<hr>
 			
-			<%-- <div class="story-category">
-				<c:out value="${board.category}"/>
-			</div> --%>
 			<div class="id">
 				<c:out value="${board.id}"/>
 			</div>
@@ -56,8 +53,8 @@
 			<hr>
 			
 			<div id="contents_container">
-				<c:out value="${board.contents}" escapeXml="false"></c:out>
 				<%-- <input type="text" class="contents" value="${board.contents}" readonly> --%>
+				<c:out value="${board.contents}" escapeXml="false"></c:out>
 			</div>
 		
 		</div>
@@ -68,7 +65,6 @@
 			<div class="search">
 				<input type="text"	class="search-music" placeholder="추천 음악 검색하기">
 			</div>
-			
 		</div>
 		
 		<div class="list">

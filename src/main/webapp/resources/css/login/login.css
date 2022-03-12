@@ -27,14 +27,18 @@ body {
 #login_btn:hover {
     cursor: pointer;
 }
+
+.remember-me_text {
+    float: left;
+    margin-top: 6px;
+    margin-left: 5px;
+}
+
 #remember-me {
     float: left;
     margin-top: 10px;
 }
-.remember-me_text {
-    float: left;
-    margin-top: 6px;
-}
+
 hr {
     margin-top: 50px;
     width: 410px;
