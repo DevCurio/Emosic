@@ -36,7 +36,7 @@
 						<td>${board.no}</td>
 						<td>${board.category}</td>
 						<td><a href="${pageContext.request.contextPath}/board/storyDetail?no=${board.no}">${board.title}</a></td>
-						<td>${board.userId}</td>
+						<td>${board.id}</td>
 						<td>${board.viewCount}</td>
 						<td><fmt:formatDate value="${board.writeDate}" pattern="yy/MM/dd"/></td>
 					</tr>

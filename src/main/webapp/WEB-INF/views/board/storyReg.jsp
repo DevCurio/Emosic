@@ -34,7 +34,7 @@
 			</select>
 			
 			<input type="text" class="storyTitle" name="title" placeholder="제목을 입력하세요">
-			<input type="text" class="input_userId" name="userId" value="${loginMember.id}" readonly required>
+			<input type="text" class="id" name="id" value="${loginMember.id}" readonly required>
 			<div id="editor_container">
 				<textarea id="contents" name="contents" class="ckeditor" placeholder="내용을 입력하세요">${data.contents}</textarea>
 			</div>
@@ -62,6 +62,10 @@ function boardValidate(){
 	const contents = CKEDITOR.instances.contents.getData();
 }
 
+CKEDITOR.editorConfig = function( config ) {
+    config.enterMode = CKEDITOR.ENTER_BR
+
+};
 </script>
 
 

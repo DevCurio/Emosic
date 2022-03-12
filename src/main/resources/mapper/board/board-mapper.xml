@@ -11,7 +11,7 @@
 				seq_board_no.nextval,
 				#{category},
 				#{title},
-				#{userId},
+				#{id},
 				#{contents},
 				default,
 				default,
@@ -30,7 +30,7 @@
 	
 	<select id="selectBoardList" resultType="board">
 		select
-			no, category, title, user_id, view_count, write_date
+			no, category, title, id, view_count, write_date
 		from
 			board
 		order by
@@ -50,7 +50,7 @@
 		<id column="no" property="no"/>
 		<result column="category" property="category"/>
 		<result column="title" property="title"/>
-		<result column="user_id" property="userId"/>
+		<result column="id" property="id"/>
 		<result column="contents" property="contents"/>
 		<result column="write_date" property="writeDate"/>
 		<result column="view_count" property="viewCount"/>

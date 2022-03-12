@@ -29,7 +29,7 @@
 				<c:out value="${board.category}"/>
 			</div> --%>
 			<div class="userId">
-				<c:out value="${board.userId}"/>
+				<c:out value="${board.id}"/>
 			</div>
 			
 			<div class="info-right">
@@ -56,7 +56,8 @@
 			<hr>
 			
 			<div id="contents_container">
-				<input type="text" class="contents" value="${board.contents}" readonly>
+				<c:out value="${board.contents}" escapeXml="false"></c:out>
+				<%-- <input type="text" class="contents" value="${board.contents}" readonly> --%>
 			</div>
 		
 		</div>
