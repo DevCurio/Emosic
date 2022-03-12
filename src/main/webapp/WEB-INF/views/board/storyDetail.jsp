@@ -28,7 +28,7 @@
 			<%-- <div class="story-category">
 				<c:out value="${board.category}"/>
 			</div> --%>
-			<div class="userId">
+			<div class="id">
 				<c:out value="${board.id}"/>
 			</div>
 			
