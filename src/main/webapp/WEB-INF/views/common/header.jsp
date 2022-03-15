@@ -18,10 +18,6 @@
     <!--home.jsp에서 정의-->
     <title>${param.title}</title> 
     
-    <!-- 사용자작성 css -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/header.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/footer.css">
-    
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
    	
 	<!-- bootstrap js: jquery load 이후에 작성할것.-->
@@ -31,6 +27,10 @@
 
     <!-- 구글 아이콘 -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    
+    <!-- 사용자작성 css -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/footer.css">
     
 	<%-- RedirectAttributes.addFlashAttribute의 저장된 속성값 사용(1회용) --%>
 	<c:if test="${not empty msg}">
@@ -49,7 +49,9 @@
 			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 				<li><a href="${pageContext.request.contextPath}/" class="nav-link px-2 link-secondary home">Emosic</a></li>
 				<li><a href="${pageContext.request.contextPath}/board/storyList" class="nav-link px-2 link-dark story">STORY</a></li>
+				<sec:authorize access="hasRole('ADMIN')">
 				<li><a href="#" class="nav-link px-2 link-dark notice">NOTICE</a></li>
+				</sec:authorize>
 			</ul>
 			<!-- 통합 검색 -->
 			<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -58,12 +60,16 @@
 			<!-- 로그인 하지 않은 경우 -->
 			<!-- loginMember는 LoginController에서 addObject함 -->
 			<c:if test="${loginMember == null}">
-			<div class="dropdown text-end">
+			<%-- <sec:authorize access="isAnonymous()"> --%>
+				<div class="dropdown text-end">
 				<a href="${pageContext.request.contextPath}/login">
 					<span class="material-icons-outlined">login</span>
 				</a>
 			</div>
+			<%-- </sec:authorize> --%>
 			</c:if>
+			
+			
 			<!-- 로그인 한 경우 -->
 			<c:if test="${loginMember != null}">
 			<div class="dropdown text-end">
