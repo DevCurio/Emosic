@@ -46,4 +46,9 @@ public class HomeController {
 	public String storyDetail() {
 		return "/board/storyDetail";
 	}
+	
+	@GetMapping("/error")
+	public String error() {
+		return "/error/accessDenied";
+	}
 }

@@ -79,8 +79,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.invalidateHttpSession(true);
 		
 		//접근권한 없음 페이지 연결
-		//http.exceptionHandling()
-		//	.accessDeniedPage("/error/accessDenied.do");
+		http.exceptionHandling()
+			.accessDeniedPage("/error/accessDenied");
 		
 	}
 
