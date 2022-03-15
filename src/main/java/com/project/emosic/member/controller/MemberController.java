@@ -2,11 +2,19 @@ package com.project.emosic.member.controller;
 
 import java.beans.PropertyEditor;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -147,14 +155,54 @@ public class MemberController {
 		return nickNameDuplicate;
 	}
 	
-	@GetMapping("/myPage")
-	public String memberMypage(String id, Model model) {
+	@GetMapping("/userDetail")
+	public void memberDetail(Authentication authentication, @AuthenticationPrincipal User user, Model model) {
+		//1.security context holder bean
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		//2. handler의 매개인자로 authentication객체 요청
+		// UsernamePasswordAuthenticationToken
+		log.debug("authentication = {}", authentication); 
+		log.debug("user = {}", authentication.getPrincipal());
 		
-		User user = memberService.selectOneUser(id);
+		//3. @AuthenticationPrincipal Member member
+		log.debug("user = {}", user);
 		
-		model.addAttribute("user",user);
+		model.addAttribute("loginMember", authentication.getPrincipal());
 		
-		return "/member/myPage";
+	}
+	
+	@PostMapping("/userUpdate")
+	public String userUpdate(User updateUser, Authentication oldAuthentication, RedirectAttributes redirectAttr) {
+		//1.업무로직 : db반영
+		
+		log.debug("updateMember = {}", updateUser);
+		
+		
+		//updateMember에 authorities setting
+		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+		for(GrantedAuthority auth: oldAuthentication.getAuthorities()) {
+			SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(auth.getAuthority());
+			authorities.add(simpleGrantedAuthority);
+		}
+		
+		updateUser.setAuthorities(authorities);
+		
+		updateUser.setPassword(((User)oldAuthentication.getPrincipal()).getPassword());
+		
+		//2. security context 에서 principal 갱신
+		Authentication newAuthentication = 
+				new UsernamePasswordAuthenticationToken(
+						updateUser,
+							oldAuthentication.getCredentials(),
+							oldAuthentication.getAuthorities()
+						);
+		SecurityContextHolder.getContext().setAuthentication(newAuthentication);
+		
+		//3.사용자 피드백
+		redirectAttr.addFlashAttribute("msg", "사용자 정보 수정 성공");
+		
+		return "redirect:/member/userDetail";
 	}
 	
 }
