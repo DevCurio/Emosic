@@ -8,13 +8,13 @@ span {
     font-size: 12px;
 }
 .container {
-    width: 410px;
+    width: 420px;
     height: 80vh;
     margin: 0 auto;
     margin-top: 130px;
 }
-.reg_info {
-    width: 400px;
+#reg_info {
+    width: 420px;
     margin: 0 auto;
 }
 #id, #password, #pw_confirm, #nickName{
@@ -22,8 +22,6 @@ span {
     height: 40px;
     margin-top: 20px;
 }
-
-
 .reg_btn {
     width: 410px;
     height: 40px;

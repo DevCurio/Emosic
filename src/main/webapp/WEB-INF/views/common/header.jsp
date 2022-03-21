@@ -49,9 +49,6 @@
 			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 				<li><a href="${pageContext.request.contextPath}/" class="nav-link px-2 link-secondary home">Emosic</a></li>
 				<li><a href="${pageContext.request.contextPath}/board/storyList" class="nav-link px-2 link-dark story">STORY</a></li>
-				<sec:authorize access="hasRole('ADMIN')">
-				<li><a href="#" class="nav-link px-2 link-dark notice">NOTICE</a></li>
-				</sec:authorize>
 			</ul>
 			<!-- 통합 검색 -->
 			<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -60,13 +57,11 @@
 			<!-- 로그인 하지 않은 경우 -->
 			<!-- loginMember는 LoginController에서 addObject함 -->
 			<c:if test="${loginMember == null}">
-			<%-- <sec:authorize access="isAnonymous()"> --%>
 				<div class="dropdown text-end">
 				<a href="${pageContext.request.contextPath}/login">
 					<span class="material-icons-outlined">login</span>
 				</a>
 			</div>
-			<%-- </sec:authorize> --%>
 			</c:if>
 			
 			

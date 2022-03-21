@@ -38,3 +38,7 @@ $("#pw_confirm").change(function(){
 $("#reg_btn").click(function(){
 	$(".form_memberReg").submit();
 });
+
+
+
+
