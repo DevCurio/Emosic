@@ -37,13 +37,4 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.selectUser(id);
 	}
 
-	@Override
-	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-		User user = memberDao.selectOneMember(id);
-		log.debug("user = {}", user);
-		if(user == null)
-			throw new UsernameNotFoundException(id);
-		return user;
-	}
-	
 }

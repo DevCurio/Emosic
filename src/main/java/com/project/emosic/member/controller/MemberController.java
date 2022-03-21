@@ -39,11 +39,10 @@ import com.project.emosic.member.model.vo.User;
 
 import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 @Controller
 @RequestMapping("/member")
 @SessionAttributes(value = {"loginMember", "anotherValue"}) //로그인 정보를 담는용도
-@Slf4j
 public class MemberController {
 	
 	@Autowired
@@ -153,56 +152,6 @@ public class MemberController {
 		int nickNameDuplicate = memberService.selectNickNameDuplicate(nickName);
 		
 		return nickNameDuplicate;
-	}
-	
-	@GetMapping("/userDetail")
-	public void memberDetail(Authentication authentication, @AuthenticationPrincipal User user, Model model) {
-		//1.security context holder bean
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-		//2. handler의 매개인자로 authentication객체 요청
-		// UsernamePasswordAuthenticationToken
-		log.debug("authentication = {}", authentication); 
-		log.debug("user = {}", authentication.getPrincipal());
-		
-		//3. @AuthenticationPrincipal Member member
-		log.debug("user = {}", user);
-		
-		model.addAttribute("loginMember", authentication.getPrincipal());
-		
-	}
-	
-	@PostMapping("/userUpdate")
-	public String userUpdate(User updateUser, Authentication oldAuthentication, RedirectAttributes redirectAttr) {
-		//1.업무로직 : db반영
-		
-		log.debug("updateMember = {}", updateUser);
-		
-		
-		//updateMember에 authorities setting
-		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-		for(GrantedAuthority auth: oldAuthentication.getAuthorities()) {
-			SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(auth.getAuthority());
-			authorities.add(simpleGrantedAuthority);
-		}
-		
-		updateUser.setAuthorities(authorities);
-		
-		updateUser.setPassword(((User)oldAuthentication.getPrincipal()).getPassword());
-		
-		//2. security context 에서 principal 갱신
-		Authentication newAuthentication = 
-				new UsernamePasswordAuthenticationToken(
-						updateUser,
-							oldAuthentication.getCredentials(),
-							oldAuthentication.getAuthorities()
-						);
-		SecurityContextHolder.getContext().setAuthentication(newAuthentication);
-		
-		//3.사용자 피드백
-		redirectAttr.addFlashAttribute("msg", "사용자 정보 수정 성공");
-		
-		return "redirect:/member/userDetail";
 	}
 	
 }

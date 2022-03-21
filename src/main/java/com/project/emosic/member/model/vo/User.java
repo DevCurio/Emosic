@@ -1,59 +1,23 @@
 package com.project.emosic.member.model.vo;
 
-import java.sql.Date;
-import java.util.Collection;
-import java.util.List;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
-public class User implements UserDetails {
+@Data
+@Component
+public class User {
 	
 	private String id;
 	private String password;
 	private String nickName;
-	//private String authority;
-	//private String loginType;
 	private String regiDate;
 	private boolean enabled;
-	
-	/**
-	 * 권한을 문자열로 관리
-	 */
-	private List<SimpleGrantedAuthority> authorities;
-	
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
-	}
-	@Override
-	public String getUsername() {
-		return id;
-	}
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
+	private String role;
 
+	
 }

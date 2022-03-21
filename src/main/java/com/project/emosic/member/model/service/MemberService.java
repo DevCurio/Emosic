@@ -4,12 +4,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.project.emosic.member.model.vo.User;
 
-public interface MemberService extends UserDetailsService {
+public interface MemberService{
 
-	//public static final 
-	String ROLE_USER = "USER";
-	String ROLE_ADMIN = "ADMIN";
-		
 	int insertUser(User user);
 	
 	int selectIdDuplicate(String id);
