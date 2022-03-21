@@ -43,6 +43,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		${pageBar}
 	</div>
 </section>
 

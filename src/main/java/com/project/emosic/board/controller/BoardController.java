@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.emosic.board.model.service.BoardService;
 import com.project.emosic.board.model.vo.Board;
+import com.project.emosic.common.pageUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -49,12 +50,14 @@ public class BoardController {
 		log.debug("list = {}", list);
 		
 		//2.pagebar
-		//int totalContents = boardService.getTotalContents();
-		//String pageBar = HelloSpringUtils.getPageBar(totalContents, cPage, numPerPage, url);
+		int totalContents = boardService.getTotalContents();
+		String url = request.getRequestURI();
+		String pageBar = pageUtils.getPageBar(totalContents, cPage, numPerPage, url); 
+				
 		
 		//2. jsp처리 위임
 		model.addAttribute("list", list);
-		
+		model.addAttribute("pageBar", pageBar);
 	}
 	
 	@PostMapping("/storyReg")

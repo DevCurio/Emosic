@@ -46,6 +46,13 @@
 			no = #{no}
 	</select>
 	
+	<select id="getTotalContents" resultType="_int">
+		select
+			count(*)
+		from 
+			board
+	</select>
+	
 	<resultMap type="board" id="boardCollectionMap">
 		<id column="no" property="no"/>
 		<result column="category" property="category"/>
