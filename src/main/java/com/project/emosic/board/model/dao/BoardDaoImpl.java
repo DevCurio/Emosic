@@ -23,10 +23,13 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public List<Board> selectBoardList(Map<String, Object> param) {
+		int cPage = (int)param.get("cPage");
 		
-		RowBounds rowBounds = new RowBounds();
+		int limit = (int)param.get("numPerPage");
+		int offset = (cPage - 1) * limit; // 1 -> 0, 2 -> 5, 3 -> 10....
+		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		return session.selectList("board.selectBoardList", param);
+		return session.selectList("board.selectBoardList", null, rowBounds);
 	}
 
 	@Override

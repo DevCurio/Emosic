@@ -10,7 +10,8 @@
 <fmt:requestEncoding value="utf-8"/>
 <!-- 사용자작성 css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/board/storyList.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/js/board/storyList.js">
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/board/storyList.js"></script>
+
 
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -38,13 +39,15 @@
 						<td><a href="${pageContext.request.contextPath}/board/storyDetail?no=${board.no}" class="detailLink">${board.title}</a></td>
 						<td>${board.id}</td>
 						<td>${board.viewCount}</td>
-						<td><fmt:formatDate value="${board.writeDate}" pattern="yy/MM/dd"/></td>
+						<td>
+							<fmt:formatDate value="${board.writeDate}" pattern="yy/MM/dd"/>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		${pageBar}
 	</div>
+	${pageBar}
 </section>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

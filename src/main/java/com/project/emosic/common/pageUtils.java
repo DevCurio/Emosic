@@ -8,8 +8,7 @@ public class pageUtils {
 		int pageBarSize = 5;
 		int totalPage = (int) Math.ceil((double) totalContents / numPerPage);
 
-		// /spring/board/boardList?cPage=
-		// /spring/board/boardList?searchType=memberId&searchKeyward=a&cPage=
+		// /emosic/board/storyList?cPage=
 		url = url + (url.indexOf("?") > -1 ? "&" : "?") + "cPage=";
 		
 		// 1 2 3 4 5 : pageStart 1 ~ pageEnd 5 

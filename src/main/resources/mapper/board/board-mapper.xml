@@ -37,6 +37,13 @@
 			no desc
 	</select>
 	
+	<select id="getTotalContents" resultType="_int">
+		select
+			count(*)
+		from 
+			board
+	</select>
+	
 	<select id="selectOneBoardCollection" resultMap="boardCollectionMap">
 		select
 			*
@@ -44,13 +51,6 @@
 			board
 		where
 			no = #{no}
-	</select>
-	
-	<select id="getTotalContents" resultType="_int">
-		select
-			count(*)
-		from 
-			board
 	</select>
 	
 	<resultMap type="board" id="boardCollectionMap">

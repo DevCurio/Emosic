@@ -39,7 +39,7 @@ public class BoardController {
 						HttpServletRequest request) {
 		
 		//1. 설정값
-		int numPerPage = 5;
+		int numPerPage = 10;
 		log.debug("cPage = {}", cPage);
 		
 		Map<String, Object> param = new HashMap<>();
@@ -52,6 +52,8 @@ public class BoardController {
 		//2.pagebar
 		int totalContents = boardService.getTotalContents();
 		String url = request.getRequestURI();
+		log.debug("totalContents = {}", totalContents);
+		log.debug("url = {}", url);
 		String pageBar = pageUtils.getPageBar(totalContents, cPage, numPerPage, url); 
 				
 		
