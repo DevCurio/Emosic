@@ -15,4 +15,6 @@ public interface BoardDao {
 
 	Board selectOneBoardCollection(int no);
 
+	int updateViewCnt(int no);
+
 }

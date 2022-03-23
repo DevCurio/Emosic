@@ -32,6 +32,28 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	@PostMapping("/storyReg")
+	public String storyReg(
+						@ModelAttribute Board board,
+						HttpServletRequest request,
+						RedirectAttributes redirectAttr) {
+		
+		try {
+			log.debug("board = {}", board);
+			
+			int result = boardService.insertBoard(board);
+			
+			String msg = result > 0 ? "게시물 등록 성공!" : "게시물 등록 실패!";
+			redirectAttr.addFlashAttribute("msg", msg);
+			
+		}catch (Exception e) {
+			log.error("게시물 등록 오류!", e);
+			throw e;
+		}
+		
+		return "redirect:/board/storyList";
+	}
+	
 	@GetMapping("/storyList")
 	public void storyList(
 						@RequestParam(defaultValue = "1") int cPage,
@@ -62,35 +84,19 @@ public class BoardController {
 		model.addAttribute("pageBar", pageBar);
 	}
 	
-	@PostMapping("/storyReg")
-	public String storyReg(
-						@ModelAttribute Board board,
-						HttpServletRequest request,
-						RedirectAttributes redirectAttr) {
-		
-		try {
-			log.debug("board = {}", board);
-			
-			int result = boardService.insertBoard(board);
-			
-			String msg = result > 0 ? "게시물 등록 성공!" : "게시물 등록 실패!";
-			redirectAttr.addFlashAttribute("msg", msg);
-			
-		}catch (Exception e) {
-			log.error("게시물 등록 오류!", e);
-			throw e;
-		}
-		
-		return "redirect:/board/storyList";
-	}
-	
 	@GetMapping("/storyDetail")
-	public void storyDetail(@RequestParam int no, Model model) {
+	public void storyView(
+						@RequestParam int no,
+						Model model) {
 		
 		Board board = boardService.selectOneBoardCollection(no);
 		log.debug("board = {}", board);
 		
+		boardService.updateViewCnt(no);
+		log.debug("boardNo = {}", no);
+		
 		model.addAttribute("board", board);
+		
 	}
 	
 }

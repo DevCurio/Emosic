@@ -41,5 +41,10 @@ public class BoardDaoImpl implements BoardDao {
 	public Board selectOneBoardCollection(int no) {
 		return session.selectOne("board.selectOneBoardCollection", no);
 	}
+
+	@Override
+	public int updateViewCnt(int no) {
+		return session.update("board.updateViewCnt", no);
+	}
 	
 }

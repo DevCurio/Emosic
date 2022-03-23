@@ -30,7 +30,7 @@
 	
 	<select id="selectBoardList" resultType="board">
 		select
-			no, category, title, id, view_count, write_date
+			no, category, title, id, view_cnt, write_date
 		from
 			board
 		order by
@@ -53,6 +53,15 @@
 			no = #{no}
 	</select>
 	
+	<update id="updateViewCnt">
+		update
+			board
+		set 
+			view_cnt = view_cnt + 1
+		where
+			no = #{no}
+	</update>
+	
 	<resultMap type="board" id="boardCollectionMap">
 		<id column="no" property="no"/>
 		<result column="category" property="category"/>
@@ -60,8 +69,8 @@
 		<result column="id" property="id"/>
 		<result column="contents" property="contents"/>
 		<result column="write_date" property="writeDate"/>
-		<result column="view_count" property="viewCount"/>
-		<result column="like_count" property="likeCount"/>
+		<result column="view_cnt" property="viewCnt"/>
+		<result column="like_cnt" property="likeCnt"/>
 	</resultMap>
 		
 </mapper>

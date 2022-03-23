@@ -17,9 +17,7 @@ public class Board {
 	private String id;
 	private String contents;
 	private Date writeDate;
-	private int viewCount;
-	private int likeCount;
-	
-	//private int attachCount;	//첨부파일 갯수
+	private int viewCnt;
+	private int likeCnt;
 	
 }

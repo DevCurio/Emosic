@@ -15,5 +15,7 @@ public interface BoardService {
 
 	Board selectOneBoardCollection(int no);
 
+	int updateViewCnt(int no);
+
 
 }

@@ -39,5 +39,10 @@ public class BoardServiceImpl implements BoardService {
 	public Board selectOneBoardCollection(int no) {
 		return boardDao.selectOneBoardCollection(no);
 	}
+
+	@Override
+	public int updateViewCnt(int no) {
+		return boardDao.updateViewCnt(no);
+	}
 	
 }

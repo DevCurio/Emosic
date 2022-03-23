@@ -38,12 +38,12 @@
 				<span class="material-icons">schedule</span>
 				
 				<div class="viewCount">
-					<c:out value="${board.viewCount}"></c:out>
+					<c:out value="${board.viewCnt}"></c:out>
 				</div>
 				<span class="material-icons">visibility</span>
 
 				<div class="likeCount">
-					<c:out value="${board.likeCount}"></c:out>
+					<c:out value="${board.likeCnt}"></c:out>
 				</div>
 				<span class="material-icons">thumb_up_off_alt</span>
 				
