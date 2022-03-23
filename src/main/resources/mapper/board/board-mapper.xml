@@ -12,6 +12,7 @@
 				#{category},
 				#{title},
 				#{id},
+				#{nickName},
 				#{contents},
 				default,
 				default,
@@ -30,7 +31,7 @@
 	
 	<select id="selectBoardList" resultType="board">
 		select
-			no, category, title, id, view_cnt, write_date
+			no, category, title, id, nickName, view_cnt, write_date
 		from
 			board
 		order by
@@ -67,6 +68,7 @@
 		<result column="category" property="category"/>
 		<result column="title" property="title"/>
 		<result column="id" property="id"/>
+		<result column="nickName" property="nickName"/>
 		<result column="contents" property="contents"/>
 		<result column="write_date" property="writeDate"/>
 		<result column="view_cnt" property="viewCnt"/>

@@ -3,6 +3,8 @@ package com.project.emosic.board.model.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,9 +42,24 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.selectOneBoardCollection(no);
 	}
 
+	
 	@Override
-	public int updateViewCnt(int no) {
-		return boardDao.updateViewCnt(no);
+	public void updateViewCnt(int no, HttpSession session) {
+		
+		long update_time = 0; //null 방지용 초기값
+		
+		if(session.getAttribute("update_time_"+no)!= null) {
+			update_time = (long) session.getAttribute("update_time_"+no);
+		}
+		
+		long current_time = System.currentTimeMillis();
+		if(current_time - update_time > 60 * 60 * 1000) {	//1시간 지나야 조회수 증가
+			
+			boardDao.updateViewCnt(no);
+			session.setAttribute("update_time_" + no, current_time);
+			
+		}
+		
 	}
 	
 }

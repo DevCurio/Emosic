@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -87,12 +88,13 @@ public class BoardController {
 	@GetMapping("/storyDetail")
 	public void storyView(
 						@RequestParam int no,
+						HttpSession session,
 						Model model) {
 		
 		Board board = boardService.selectOneBoardCollection(no);
 		log.debug("board = {}", board);
 		
-		boardService.updateViewCnt(no);
+		boardService.updateViewCnt(no,session);
 		log.debug("boardNo = {}", no);
 		
 		model.addAttribute("board", board);

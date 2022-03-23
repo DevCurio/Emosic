@@ -35,6 +35,7 @@
 			
 			<input type="text" class="storyTitle" name="title" placeholder="제목을 입력하세요">
 			<input type="text" class="id" name="id" value="${loginMember.id}" readonly required>
+			<input type="text" class="nickName" name="nickName" value="${loginMember.nickName}" readonly required>
 			<div id="editor_container">
 				<textarea id="contents" name="contents" class="ckeditor" placeholder="내용을 입력하세요">${data.contents}</textarea>
 			</div>

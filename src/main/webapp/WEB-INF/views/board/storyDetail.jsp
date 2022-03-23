@@ -26,7 +26,7 @@
 			<hr>
 			
 			<div class="id">
-				<c:out value="${board.id}"/>
+				<c:out value="${board.nickName}"/>
 			</div>
 			
 			<div class="info-right">
