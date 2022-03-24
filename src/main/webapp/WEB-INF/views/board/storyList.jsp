@@ -27,7 +27,7 @@
 					<th class="list-category">카테고리</th>
 					<th class="list-title">제목</th>
 					<th class="list-nickName">작성자</th>
-					<th class="list-viewCount">조회수</th>
+					<th class="list-viewCnt">조회수</th>
 					<th class="list-date">작성일</th>
 				</tr>
 			</thead>
