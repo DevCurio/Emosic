@@ -9,7 +9,6 @@
 <fmt:requestEncoding value="utf-8"/>
 <!-- 사용자작성 css -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/myPage.css">
-<script src="${pageContext.request.contextPath}/resources/js/member/register.js"></script>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="Emosic" name="title"/>
@@ -19,7 +18,7 @@
 	<div class="myPage_container">
 		<h2>회원 정보 변경</h2>
 		<form
-			action="${pageContext.request.contextPath}/member/memberUpdate"
+			action="${pageContext.request.contextPath}/member/update"
 			name="memberUpdate"
 			id="update_info"
 			method="post">
@@ -39,6 +38,8 @@
 			
 		</form>
 	</div>
+	
+	<script src="${pageContext.request.contextPath}/resources/js/member/register.js"></script>
 	
 	<script type="text/javascript">
 	
@@ -77,6 +78,7 @@
 	});
 		
 	</script>
+	
 </section>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

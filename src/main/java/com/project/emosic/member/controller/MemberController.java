@@ -3,7 +3,9 @@ package com.project.emosic.member.controller;
 import java.beans.PropertyEditor;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -29,12 +31,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.FlashMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.project.emosic.member.model.service.MemberService;
+import com.project.emosic.member.model.service.MemberServiceImpl;
 import com.project.emosic.member.model.vo.User;
 
 import lombok.extern.slf4j.Slf4j;
@@ -54,14 +58,10 @@ public class MemberController {
 	@PostMapping("/register")
 	public String registerMember(User user, RedirectAttributes redirectAttr) {
 	
-		log.info("user = {}", user);
-		
 		try {
 			
 			//비밀번호 암호화
-			String rawPassword = user.getPassword();
-			String encodedPassword = bcryptPasswordEncoder.encode(rawPassword);
-			log.info("rawPassword = {}", rawPassword);
+			String encodedPassword = bcryptPasswordEncoder.encode(user.getPassword());
 			log.info("encodedPassword = {}", encodedPassword);
 			
 			//DB처리
@@ -154,4 +154,25 @@ public class MemberController {
 		return nickNameDuplicate;
 	}
 	
+	@PostMapping("/update")
+	public String memberUpdate(
+						User updateUser,
+						ModelAndView mav,
+						RedirectAttributes redirectAttr,
+						HttpServletRequest request,
+						@RequestParam(value = "profile", required = false) MultipartFile[] multipartFiles) {
+		
+		try {
+			updateUser.setNickName(updateUser.getNickName());
+			updateUser.setPassword(bcryptPasswordEncoder.encode(updateUser.getPassword()));
+			
+			memberService.updateUser(updateUser);
+			redirectAttr.addFlashAttribute("msg", "사용자 정보 수정 성공");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		
+		return "redirect:/";
+	}
 }

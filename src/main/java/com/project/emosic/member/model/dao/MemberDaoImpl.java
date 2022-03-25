@@ -1,5 +1,7 @@
 package com.project.emosic.member.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,9 +38,15 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public User selectOneMember(String id) {
-		return session.selectOne("member.selectOneMember", id);
+	public int updatePassword(Map<String, Object> param) {
+		return session.update("user.updatePassword", param);
 	}
-	
+
+	@Override
+	public int updateUser(User updateUser) {
+		return session.update("user.updateUser", updateUser);
+	}
+
+
 
 }

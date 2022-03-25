@@ -1,6 +1,6 @@
 package com.project.emosic.member.model.service;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
+import java.util.Map;
 
 import com.project.emosic.member.model.vo.User;
 
@@ -13,5 +13,9 @@ public interface MemberService{
 	int selectNickNameDuplicate(String nickName);
 
 	User selectOneUser(String id);
+
+	int updatePassword(Map<String, Object> param);
+
+	int updateUser(User updateUser);
 	
 }

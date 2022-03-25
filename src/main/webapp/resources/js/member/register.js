@@ -1,3 +1,39 @@
+//아이디 유효성 검사 & 아이디 중복 검사(1 = 중복 / 0 != 중복)
+$("#id").change(function() {
+	const $id = $("#id");	//const는 중복불가 변수
+	const id = $id.val();
+	const idReg = /^[a-z0-9_-]{5,15}$/;
+	
+	//debugger;
+	$.ajax({
+		type: "get",
+		url: "member/id/duplicate",
+		data: {"id": id},
+		success:function(isduplicate){
+			//debugger;
+			if(idReg.test(id) == false) {
+				$(".id_checked").text("5~15자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.").css("color","red");
+				$id.focus();
+				
+			} else if(isduplicate != 1) {	//중복 사용자 없음 (사용 가능)
+				$(".id_checked").text("사용 가능합니다.").css("color","green");
+				
+			} else if(isduplicate == 1) {	//중복 사용자 존재 (사용 불가)
+				$(".id_checked").text("이미 존재하는 ID 입니다.").css("color","red");
+				$id.focus();
+			}
+			
+		},
+		error : function(e){
+			//debugger;
+			alert("에러 입니다.")
+		}
+	});
+
+});
+
+
+
 //비밀번호 정규식
 $("#password").change(function(){
 
@@ -35,10 +71,9 @@ $("#pw_confirm").change(function(){
 })
 
 
+
 $("#reg_btn").click(function(){
 	$(".form_memberReg").submit();
 });
-
-
 
 

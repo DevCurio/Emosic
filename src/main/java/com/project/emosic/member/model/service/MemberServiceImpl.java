@@ -1,5 +1,7 @@
 package com.project.emosic.member.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -35,6 +37,16 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public User selectOneUser(String id) {
 		return memberDao.selectUser(id);
+	}
+
+	@Override
+	public int updatePassword(Map<String, Object> param) {
+		return memberDao.updatePassword(param);
+	}
+
+	@Override
+	public int updateUser(User updateUser) {
+		return memberDao.updateUser(updateUser);
 	}
 
 }

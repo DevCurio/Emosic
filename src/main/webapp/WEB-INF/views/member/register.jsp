@@ -20,8 +20,7 @@
 	
 	<!-- 사용자작성 css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/member/register.css">
-    <!-- 사용자 작성 js -->
-	<script src="${pageContext.request.contextPath}/resources/js/member/register.js"></script>
+    
 	
     <%-- RedirectAttributes.addFlashAttribute의 저장된 속성값 사용(1회용) --%>
 	<c:if test="${not empty msg}">
@@ -29,6 +28,7 @@
 		alert("${msg}");
 	</script>
 	</c:if>
+	
 </head>
 
 <body>
@@ -55,42 +55,11 @@
             <button type="submit" class="reg_btn" id="reg_btn">회원가입</button>
         </form>
     </div>
- 
- 	<script type="text/javascript">
- 	//아이디 유효성 검사 & 아이디 중복 검사(1 = 중복 / 0 != 중복)
- 	$("#id").change(function() {
- 		const $id = $("#id");	//const는 중복불가 변수
- 		const id = $id.val();
- 		const idReg = /^[a-z0-9_-]{5,15}$/;
- 		
- 		//debugger;
- 		$.ajax({
- 			type: "get",
- 			url: "${pageContext.request.contextPath}/member/id/duplicate",
- 			data: {"id": id},
- 			success:function(isduplicate){
- 				//debugger;
- 				if(idReg.test(id) == false) {
- 					$(".id_checked").text("5~15자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.").css("color","red");
- 					$id.focus();
- 					
- 				} else if(isduplicate != 1) {	//중복 사용자 없음 (사용 가능)
- 					$(".id_checked").text("사용 가능합니다.").css("color","green");
- 					
- 				} else if(isduplicate == 1) {	//중복 사용자 존재 (사용 불가)
- 					$(".id_checked").text("이미 존재하는 ID 입니다.").css("color","red");
- 					$id.focus();
- 				}
- 				
- 			},
- 			error : function(e){
- 				//debugger;
- 				alert("에러 입니다.")
- 			}
- 		});
 
- 	});
-
+	<!-- 사용자 작성 js -->
+	<script src="${pageContext.request.contextPath}/resources/js/member/register.js"></script>
+	
+ 	<script>
  	//닉네임 유효성 검사 & 닉네임 중복 검사(1 = 중복 / 0 != 중복)
  	$("#nickName").change(function() {
  		const $nickName = $("#nickName");	//const는 중복불가 변수
@@ -105,7 +74,7 @@
  			success:function(nickNameDuplicate){
  				
  				if(nickReg.test(nickName) == false) {
- 					$(".nickName_checked").text("2~10자 가능합니다.").css("color","red");
+ 					$(".nickName_checked").text("2~10자만 가능합니다.").css("color","red");
  					$nickName.focus();
  					
  				} else if(nickNameDuplicate != 1) {	//중복 사용자 없음 (사용 가능)
@@ -124,7 +93,6 @@
  		});
 
  	});
- 		
  	</script>
 </body>
 

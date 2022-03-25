@@ -1,5 +1,7 @@
 package com.project.emosic.member.model.dao;
 
+import java.util.Map;
+
 import com.project.emosic.member.model.vo.User;
 
 public interface MemberDao {
@@ -12,5 +14,8 @@ public interface MemberDao {
 
 	User selectUser(String id);
 
-	User selectOneMember(String id);
+	int updatePassword(Map<String, Object> param);
+
+	int updateUser(User updateUser);
+
 }

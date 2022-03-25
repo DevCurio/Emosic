@@ -12,6 +12,7 @@
 				#{password},
 				#{nickName},
 				default,
+				default,
 				default
 				)
 	</insert>
@@ -50,14 +51,32 @@
 			id = #{id}
 	</select>
 	
+	<update id="updatePassword">
+		update
+			member
+		set
+			password = #{password}
+		where
+			id = #{id}
+	</update>
+
+	<update id="updateUser">
+		update
+			member
+		set
+			password = #{password},
+			nickName = #{nickName}
+		where
+			id = #{id}
+	</update>
+	
 	<resultMap type="user" id="memberMap">
 		<id column="ID" property="id"/>
 		<result column="PASSWORD" property="password"/>
 		<result column="NICKNAME" property="nickName"/>
 		<result column="REGI_DATE" property="regiDate"/>
 		<result column="ENABLED" property="enabled"/>
-		<result column="AUTHORITY" property="authority"/>
-		<result column="LOGIN_TYPE" property="loginType"/>
+		<result column="ROLE" property="role"/>
 	</resultMap>
 	
 </mapper>
