@@ -64,6 +64,10 @@ $("#pw_confirm").change(function(){
 	if(pw != pwc){
 		$(".pw_confirm_checked").text("비밀번호가 일치하지 않습니다.").css("color","red");
 		$pwc.focus();
+	} else if(pwc == ''){
+		alert('비밀번호 확인이 필요합니다.');
+		$pwc.focus();
+		return false;		
 	} else {
 		$(".pw_confirm_checked").text("비밀번호가 일치 합니다.").css("color","green");
 	}
@@ -71,9 +75,30 @@ $("#pw_confirm").change(function(){
 })
 
 
+function submitCheck(){
+	const id = $("#id").val();
+	const pw = $("#password").val();
+	const pwc = $("#pw_confirm").val();
+	const nick = $("#nickName").val();
+	
+	if(id == ""){
+		alert("아이디를 입력 해주세요.");
+		return false;
+	}else if(pw == ""){
+		alert("비밀번호를 입력 해주세요.");
+		return false;
+	}else if(pwc == ""){
+		alert("비밀번호 확인을 해주세요.");
+		return false;
+	}else if(nick == ""){
+		alert("닉네임을 입력 해주세요.");
+		return false;
+	}
+	
+}
 
-$("#reg_btn").click(function(){
+/*$("#reg_btn").click(function(){
 	$(".form_memberReg").submit();
-});
+});*/
 
 

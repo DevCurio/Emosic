@@ -76,7 +76,7 @@ public class MemberController {
 			redirectAttr.addFlashAttribute("msg", msg);
 			
 			
-		} catch(Exception e) {
+		} catch(NullPointerException e) {
 			log.error(e.getMessage(), e);
 			
 			throw e;			
@@ -157,17 +157,16 @@ public class MemberController {
 	@PostMapping("/update")
 	public String memberUpdate(
 						User updateUser,
-						ModelAndView mav,
 						RedirectAttributes redirectAttr,
-						HttpServletRequest request,
-						@RequestParam(value = "profile", required = false) MultipartFile[] multipartFiles) {
-		
+						SessionStatus sessionStatus) {		
 		try {
 			updateUser.setNickName(updateUser.getNickName());
 			updateUser.setPassword(bcryptPasswordEncoder.encode(updateUser.getPassword()));
 			
 			memberService.updateUser(updateUser);
 			redirectAttr.addFlashAttribute("msg", "사용자 정보 수정 성공");
+			
+			sessionStatus.setComplete();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

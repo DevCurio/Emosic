@@ -14,9 +14,9 @@
 	<jsp:param value="Emosic" name="title"/>
 </jsp:include>
 
-<section>
+
 	<div class="myPage_container">
-		<h2>회원 정보 변경</h2>
+		<h2>마이페이지</h2>
 		<form
 			action="${pageContext.request.contextPath}/member/update"
 			name="memberUpdate"
@@ -25,16 +25,13 @@
 			
 			<input type="text" id="id" name="id" placeholder="아이디" value="${loginMember.id}" required readonly/>
 			
-			<input type="password" id="password" name="password" placeholder="비밀번호"/>
-			<span class="pw_checked"></span>
+			<input type="text" id="nickName" name="nickName" placeholder="닉네임" value="${loginMember.nickName}" required readonly/>
 			
-			<input type="password" name="pw_confirm" id="pw_confirm" placeholder="비밀번호 확인">
-			<span class="pw_confirm_checked"></span>
-			
-			<input type="text" id="nickName" name="nickName" placeholder="닉네임" value="${loginMember.nickName}" required/>
-			<span class="nickName_checked"></span>
+			<input type="text" id="email" name="email" placeholder="이메일" value="" required readonly/>
 			
 			<button type="submit" class="update_btn" id="update_btn">정보 변경</button>
+			<button type="button" class="modifyPw_btn" onclick="window.open('add')">비밀번호 변경</button>
+			<button type="reset" class="cancle_btn" id="cancle_btn">취소</button>
 			
 		</form>
 	</div>
@@ -79,6 +76,6 @@
 		
 	</script>
 	
-</section>
+
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -38,21 +38,22 @@
 			class="form_memberReg"
         	action="${pageContext.request.contextPath}/member/register"
         	id="reg_info"
-        	method="post">
+        	method="post"
+        	onsubmit="submitCheck()">
         	
             <input type="text" name="id" id="id" placeholder="아이디" required>
             <span class="id_checked"></span>
 
-            <input type="password" name="password" id="password" placeholder="비밀번호">
+            <input type="password" name="password" id="password" placeholder="비밀번호" required>
             <span class="pw_checked"></span>
 
-            <input type="password" name="pw_confirm" id="pw_confirm" placeholder="비밀번호 확인">
+            <input type="password" name="pw_confirm" id="pw_confirm" placeholder="비밀번호 확인" required>
             <span class="pw_confirm_checked"></span>
             
             <input type="text" name="nickName" id="nickName" placeholder="닉네임" required>
             <span class="nickName_checked"></span>
   
-            <button type="submit" class="reg_btn" id="reg_btn">회원가입</button>
+            <input type="submit" class="reg_btn" id="reg_btn" value="회원가입">
         </form>
     </div>
 
@@ -93,6 +94,7 @@
  		});
 
  	});
+
  	</script>
 </body>
 

@@ -25,13 +25,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
-    <!-- 구글 아이콘 -->
+    <!-- 구글 아이콘/폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+	
     <!-- 사용자작성 css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/common/footer.css">
     
+	
 	<%-- RedirectAttributes.addFlashAttribute의 저장된 속성값 사용(1회용) --%>
 	<c:if test="${not empty msg}">
 	<script>
@@ -45,7 +49,7 @@
 <header class="p-3 mb-3 border-bottom">
 	<div class="container">
 		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-			<a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"></a>
+			<!-- <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"></a> -->
 			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 				<li><a href="${pageContext.request.contextPath}/" class="nav-link px-2 link-secondary home">Emosic</a></li>
 				<li><a href="${pageContext.request.contextPath}/board/storyList" class="nav-link px-2 link-dark story">STORY</a></li>
@@ -73,7 +77,7 @@
 				</a>
 				<ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
 	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/storyReg">사연 작성</a></li>
-	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">프로필</a></li>
+	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/myPage">회원정보</a></li>
 	            	<li><hr class="dropdown-divider"></li>
 	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
 				</ul>				

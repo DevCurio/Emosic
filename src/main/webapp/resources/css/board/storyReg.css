@@ -1,5 +1,6 @@
 .storyTitle{
 	width: 350px;
+	height: 26px;
 }
 
 .ck-editor__editable {
@@ -21,4 +22,8 @@
 	height: 40px;
 	border-radius: 5px;
 	margin: 0 10px;
+}
+
+#form_storyReg{
+	padding-top: 70px;
 }
