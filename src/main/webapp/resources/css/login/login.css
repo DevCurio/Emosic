@@ -2,20 +2,16 @@ body {
     text-align: center;
     background-color:#f4f4f4;
 }
-.container {
-/*     width: 600px;
-    height: 80vh;
-    border: 1px solid #d9d9d9; */
-    
+.container {    
     width: 450px;
     margin: 0 auto;
     margin-top: 175px;
     background-color: #fcfcfc;
     border-radius: 26px;
-    padding: 60px 72px 48px 72px;
+    padding: 60px 50px 48px 50px;
 }
 .container > h1 {
-	font-family: 'Nanum Brush Script', cursive;
+	font-family: 'Gowun Batang', serif;
 }
 #login_info {
     width: 420px;
@@ -76,6 +72,7 @@ hr {
     padding: 5px 2px;
     vertical-align: middle;
     float: left;
+    text-decoration: none;
 }
 .oauth {
     width: 420px;
