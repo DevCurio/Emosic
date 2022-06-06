@@ -29,7 +29,6 @@
 				<option value="연애">연애</option>
 				<option value="직장">직장</option>
 				<option value="취업">취업</option>
-				<option value="우정">우정</option>
 				<option value="기타">기타</option>
 			</select>
 			
