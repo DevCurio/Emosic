@@ -26,8 +26,8 @@
 	            <input type="text" name="id" id="id" placeholder="아이디">
 	            <input type="password" name="password" id="password" placeholder="비밀번호">
 	            
-				<input type="checkbox" name="remember-me" id="remember-me">
-	            <label for="remember-me" class="remember-me_text">로그인 유지</label>
+				<!-- <input type="checkbox" name="remember-me" id="remember-me">
+	            <label for="remember-me" class="remember-me_text">로그인 유지</label> -->
 
 	            <button type="submit" id="login_btn">로그인</button>
         	</form>
@@ -39,9 +39,9 @@
             <a href="#">ID 찾기</a>
             <a href="#">비밀번호 재설정</a>
         </div>
-        <div class="oauth">
+        <%-- <div class="oauth">
             <input type="button" class="kakao_btn" style="background-image:url('${pageContext.request.contextPath}/resources/images/oauth/kakao/kakao_login_large_wide.png')">
-        </div>
+        </div> --%>
     </div>
 </body>
 </html>
